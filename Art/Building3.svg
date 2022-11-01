@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.28457506"
-     inkscape:cx="337.34509"
-     inkscape:cy="896.07289"
+     inkscape:cx="470.87753"
+     inkscape:cy="699.28827"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -55,12 +55,6 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:#ffb380;stroke-width:2"
-       d="m 98.645161,73.096773 c -2.449721,0.03164 -5.053571,-0.311923 -7.096776,0.709678 -0.211584,0.105791 -0.542403,-0.167272 -0.709676,0 -0.177419,0.177419 -0.177419,0.532257 -0.35484,0.709676 -0.11828,0.11828 -0.946235,0.236562 -1.064514,0.354841 -0.07776,0.07776 -0.963946,1.573051 -1.064517,1.774192 -0.392284,0.784569 -0.220228,0.110115 -0.709678,0.354838 -0.784567,0.392285 -0.110115,0.220229 -0.354838,0.709679 -0.354838,0.709676 -1.419355,1.064517 -1.774193,1.774193 -0.633648,1.267293 -1.486905,2.618967 -2.129033,3.903226 -0.105794,0.211584 0.105793,0.498091 0,0.709678 -0.406953,0.813904 -1.113843,1.567336 -1.419355,2.483869 -0.491509,1.474523 -1.115028,3.09127 -1.419355,4.612904 -0.06959,0.347949 0.101963,0.724641 0,1.064517 -0.258839,0.862801 -0.779661,1.629307 -1.064516,2.483871 -0.319355,0.958064 0.319354,2.235483 0,3.193548 -0.459656,1.378963 -0.720201,3.506297 -0.354838,4.967747 0.09535,0.3814 0.949671,1.5445 1.064516,1.77419 0.418108,0.83622 0.697839,2.11719 1.419355,2.83871 0.08364,0.0836 0.271201,-0.0836 0.354838,0 0.648174,0.64817 0.872964,1.75535 1.419355,2.48387 0.513905,0.68521 1.443826,1.61513 2.129033,2.12903 0.70317,0.52738 1.576102,0.43321 2.129031,0.70968 0.299227,0.14961 0.41045,0.56006 0.709678,0.70968 0.211585,0.10579 0.477711,-0.0464 0.709676,0 1.560454,0.31209 3.037113,1.10419 4.612905,1.41935 1.008806,0.20176 2.194639,-0.24973 3.193547,0 1.153001,0.28825 2.298517,0.58469 3.548384,0.70968 1.0425,0.10425 2.50141,-0.26174 3.54839,0 1.13305,0.28326 2.69111,0.75888 3.90323,0.35484 1.92084,-0.64028 4.30523,-3.28788 5.32258,-5.32258 0.78221,-1.56443 0.87862,-3.34556 1.41935,-4.96775 1.03154,-3.09461 1.55041,-12.92133 1.06452,-16.322575 -0.32235,-2.256401 -2.6374,-3.452802 -3.19355,-5.677421 -0.0574,-0.229495 0.0748,-0.485257 0,-0.709676 -0.17821,-0.534623 -1.09389,-1.285994 -1.41936,-1.774196 -0.29341,-0.440121 -0.33564,-1.045321 -0.70967,-1.419354 -0.20339,-0.203391 -1.62635,-1.197581 -1.7742,-1.419355 -0.21609,-0.324141 -0.30288,-0.861118 -0.70967,-1.064517 -0.21506,-0.107526 -0.91583,-0.206144 -1.06452,-0.354838 -0.0836,-0.08363 0.0836,-0.2712 0,-0.354838 -0.16727,-0.167272 -0.54241,0.167273 -0.70968,0 -0.0836,-0.08364 0.0836,-0.271203 0,-0.354838 -0.2509,-0.250909 -0.72788,0.11221 -1.06451,0 -0.15869,-0.0529 -0.20523,-0.280032 -0.35484,-0.35484 -0.29544,-0.147717 -1.19428,0.225078 -1.41936,0 -0.38226,-0.382265 -0.0423,-0.439542 -0.35483,-1.064514 -0.0529,-0.105794 -0.24905,0.05289 -0.35484,0 -1.13944,-0.569722 0.42976,-0.139959 -0.70968,-0.709679 -0.21159,-0.105791 -0.54241,0.167272 -0.70968,0 -0.0836,-0.08364 0.0836,-0.271203 0,-0.354838 -0.16727,-0.167272 -0.48526,0.07481 -0.70968,0 -0.604265,-0.201424 -1.182792,-0.47312 -1.774189,-0.709678 z"
-       id="path6022"
-       clip-path="url(#clipPath6421)"
-       transform="translate(0,101.18521)" />
     <rect
        style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2.3704;stroke-opacity:1"
        id="rect6533"
@@ -69,191 +63,56 @@
        x="51.540047"
        y="102.37042" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       style="fill:#c7c9c8;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
        id="rect11048"
        width="91.330826"
        height="91.330826"
        x="104.33459"
        y="269.29416" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2.40925;stroke-opacity:1"
+       style="fill:#ebebda;fill-opacity:1;stroke:#000000;stroke-width:2.40925;stroke-opacity:1"
        id="rect11050"
        width="132.57245"
        height="62.823421"
        x="83.713768"
        y="206.2661" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
        id="rect12504"
        width="97.305504"
        height="20.572704"
        x="101.34724"
        y="240.89886" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       style="fill:#e74949;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
        id="rect12506"
        width="97.305504"
        height="20.572704"
        x="101.34724"
        y="212.50359" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       style="fill:#ffd056;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
        id="rect13960"
        width="119.43262"
        height="37.837315"
        x="90.283684"
        y="162.40698" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       style="fill:#eaeade;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
        id="rect14744"
        width="91.471863"
        height="37.8494"
        x="104.26406"
        y="162.40094" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18376"
-       width="14.548388"
-       height="31.580645"
-       x="79.129028"
-       y="326.86264" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18378"
-       width="14.548388"
-       height="31.580645"
-       x="57.129028"
-       y="326.86264" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18380"
-       width="14.548388"
-       height="31.580645"
-       x="57.129028"
-       y="287.83038" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18382"
-       width="14.548388"
-       height="31.580645"
-       x="79.129028"
-       y="287.83038" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18384"
-       width="14.548388"
-       height="31.580645"
-       x="57.129028"
-       y="248.44327" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18386"
-       width="14.548388"
-       height="31.580645"
-       x="57.129028"
-       y="208.34651" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18388"
-       width="14.548388"
-       height="31.580645"
-       x="57.129028"
-       y="166.29813" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18390"
-       width="14.548388"
-       height="31.580645"
-       x="57.129028"
-       y="122.29812" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18392"
-       width="14.548388"
-       height="31.580645"
-       x="82.009491"
-       y="122.29812" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18402"
-       width="14.548388"
-       height="31.580645"
-       x="-219.37131"
-       y="326.86264"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18404"
-       width="14.548388"
-       height="31.580645"
-       x="-241.37131"
-       y="326.86264"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18406"
-       width="14.548388"
-       height="31.580645"
-       x="-241.37131"
-       y="287.83038"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18408"
-       width="14.548388"
-       height="31.580645"
-       x="-219.37131"
-       y="287.83038"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18410"
-       width="14.548388"
-       height="31.580645"
-       x="-241.37131"
-       y="248.44327"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18412"
-       width="14.548388"
-       height="31.580645"
-       x="-241.37131"
-       y="208.34651"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18414"
-       width="14.548388"
-       height="31.580645"
-       x="-241.37131"
-       y="166.29813"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18416"
-       width="14.548388"
-       height="31.580645"
-       x="-241.37131"
-       y="122.29812"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
-       id="rect18418"
-       width="14.548388"
-       height="31.580645"
-       x="-216.49084"
-       y="122.29812"
-       transform="scale(-1,1)" />
-    <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       style="fill:#d9ffd9;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
        id="rect18424"
        width="92.967743"
        height="51.508339"
        x="102.7258"
        y="102.37042" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       style="fill:#797aa4;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
        id="rect18426"
        width="72.741936"
        height="29.451612"
@@ -274,7 +133,7 @@
        x="179.81828"
        y="88.570831" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#77d379;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"
        id="rect19884"
        width="76.284897"
        height="40.833603"
@@ -309,7 +168,7 @@
        x="89.304062"
        y="88.570831" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#374f82;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
        id="rect19896"
        width="67.464142"
        height="40.399963"
@@ -330,17 +189,201 @@
        x="238.58176"
        y="88.570831" />
     <rect
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#374f82;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
        id="rect22984"
        width="67.464142"
        height="40.399963"
        x="190.11646"
        y="48.103359" />
     <circle
-       style="fill:#5e6260;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ce1235;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
        id="path24490"
        cx="150"
        cy="314.95956"
        r="40.908947" />
+    <path
+       style="display:inline;fill:#2dff95;fill-opacity:1;stroke:#000000;stroke-width:2"
+       d="m 134.11607,240.89886 c 0,0 -9.03969,8.99366 -9.53276,20.57271 l -23.23608,-2e-5 v -20.57269 h 32.60448"
+       id="path5161"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       d="m 133.45864,233.07629 c 0,0 -25.3877,-0.11575 -4.93074,-20.57271 h -27.18067 v 20.57271 z"
+       id="path6039"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18582"
+       style="display:inline;fill:#49acc6;stroke:#000000;stroke-width:2"
+       d="m 150,382.95398 h 11.66635 V 400 H 150 Z m 0,0 h 23.3327 V 400 H 150 Z m -11.6664,0 h 11.66638 v 17.04599 H 138.3336 Z m -11.66633,0 h 23.3327 v 17.04599 h -23.3327 z m 46.66543,0 h 23.33271 v 17.04599 H 173.3327 Z m -23.33272,0 h 46.66542 v 17.04599 h -46.66542 z m -46.66542,0 h 23.3327 v 17.04599 h -23.3327 z m 1e-5,0 h 46.66541 v 17.04599 h -46.66541 z m 1e-5,0 h 93.33082 v 17.046 h -93.33082 z m 0,-10.19022 h 93.33083 v 27.23622 H 103.33458 Z M 216.49084,122.29812 h -14.54838 v 31.58064 h 14.54838 z m 24.88047,0 h -14.54839 v 31.58064 h 14.54839 z m 0,44.00001 h -14.54839 v 31.58064 h 14.54839 z m 0,42.04838 h -14.54839 v 31.58065 h 14.54839 z m 0,40.09676 h -14.54839 v 31.58064 h 14.54839 z m -22,39.38711 h -14.54839 v 31.58065 h 14.54839 z m 22,0 h -14.54839 v 31.58065 h 14.54839 z m 0,39.03226 h -14.54839 v 31.58064 h 14.54839 z m -22,0 h -14.54839 v 31.58064 h 14.54839 z M 82.009491,122.29812 h 14.548387 v 31.58064 H 82.009491 Z m -24.880463,0 h 14.548388 v 31.58064 H 57.129028 Z m 0,44.00001 h 14.548388 v 31.58064 H 57.129028 Z m 0,42.04838 h 14.548388 v 31.58065 H 57.129028 Z m 0,40.09676 h 14.548388 v 31.58064 H 57.129028 Z m 22,39.38711 h 14.548388 v 31.58065 H 79.129028 Z m -22,0 h 14.548388 v 31.58065 H 57.129028 Z m 0,39.03226 h 14.548388 v 31.58064 H 57.129028 Z m 22,0 h 14.548388 v 31.58064 H 79.129028 Z" />
+    <path
+       id="path27548"
+       style="display:inline;fill:#aedae6;stroke:none;stroke-width:2;fill-opacity:1"
+       d="M 204.84073 122.29796 L 201.94271 124.68593 L 201.94271 151.19025 L 216.49066 139.20236 L 216.49066 122.29796 L 204.84073 122.29796 z M 226.82285 122.29796 L 226.82285 130.68815 L 237.00465 122.29796 L 226.82285 122.29796 z M 71.677279 232.0277 L 62.0913 239.92696 L 71.677279 239.92696 L 71.677279 232.0277 z M 57.128813 248.44323 L 57.128813 270.52044 L 71.677279 258.53254 L 71.677279 248.44323 L 57.128813 248.44323 z " />
+    <path
+       id="path27474"
+       style="display:inline;fill:#aedae6;stroke:none;stroke-width:2;fill-opacity:1"
+       d="M 241.37131 290.60913 L 226.82285 304.60415 L 226.82285 319.41099 L 240.82819 319.41099 L 241.37131 318.88855 L 241.37131 290.60913 z M 219.37111 311.77218 L 211.42999 319.41099 L 219.37111 319.41099 L 219.37111 311.77218 z M 204.82316 326.86274 L 204.82316 354.04609 L 219.37111 340.0516 L 219.37111 326.86274 L 204.82316 326.86274 z M 226.82285 326.86274 L 226.82285 332.88356 L 233.0819 326.86274 L 226.82285 326.86274 z M 155.96722 372.76381 L 127.65371 399.99987 L 157.0514 399.99987 L 185.36491 372.76381 L 155.96722 372.76381 z " />
+    <path
+       id="path23059"
+       style="display:inline;fill:#aedae6;stroke:none;stroke-width:2;stroke-opacity:1;fill-opacity:1"
+       d="M 241.37131 145.56734 L 232.11865 153.87898 L 241.37131 153.87898 L 241.37131 145.56734 z M 226.82285 166.29838 L 226.82285 197.87888 L 232.32484 197.87888 L 241.37131 189.75276 L 241.37131 166.29838 L 226.82285 166.29838 z M 82.994417 287.83049 L 79.12902 291.30263 L 79.12902 319.41099 L 93.677486 319.41099 L 93.677486 287.83049 L 82.994417 287.83049 z M 71.677279 297.99628 L 57.128813 311.06422 L 57.128813 319.41099 L 71.677279 319.41099 L 71.677279 297.99628 z M 57.128813 326.86274 L 57.128813 355.24963 L 71.677279 342.1817 L 71.677279 326.86274 L 57.128813 326.86274 z M 79.12902 326.86274 L 79.12902 335.48805 L 88.731018 326.86274 L 79.12902 326.86274 z " />
+    <path
+       id="path25811"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+       d="m 150,382.95398 h 11.66635 V 400 H 150 Z m 0,0 h 23.3327 V 400 H 150 Z m -11.6664,0 h 11.66638 v 17.04599 H 138.3336 Z m -11.66633,0 h 23.3327 v 17.04599 h -23.3327 z m 46.66543,0 h 23.33271 v 17.04599 H 173.3327 Z m -23.33272,0 h 46.66542 v 17.04599 h -46.66542 z m -46.66542,0 h 23.3327 v 17.04599 h -23.3327 z m 1e-5,0 h 46.66541 v 17.04599 h -46.66541 z m 1e-5,0 h 93.33082 v 17.046 h -93.33082 z m 0,-10.19022 h 93.33083 v 27.23622 H 103.33458 Z M 216.49084,122.29812 h -14.54838 v 31.58064 h 14.54838 z m 24.88047,0 h -14.54839 v 31.58064 h 14.54839 z m 0,44.00001 h -14.54839 v 31.58064 h 14.54839 z m 0,42.04838 h -14.54839 v 31.58065 h 14.54839 z m 0,40.09676 h -14.54839 v 31.58064 h 14.54839 z m -22,39.38711 h -14.54839 v 31.58065 h 14.54839 z m 22,0 h -14.54839 v 31.58065 h 14.54839 z m 0,39.03226 h -14.54839 v 31.58064 h 14.54839 z m -22,0 h -14.54839 v 31.58064 h 14.54839 z M 82.009491,122.29812 h 14.548387 v 31.58064 H 82.009491 Z m -24.880463,0 h 14.548388 v 31.58064 H 57.129028 Z m 0,44.00001 h 14.548388 v 31.58064 H 57.129028 Z m 0,42.04838 h 14.548388 v 31.58065 H 57.129028 Z m 0,40.09676 h 14.548388 v 31.58064 H 57.129028 Z m 22,39.38711 h 14.548388 v 31.58065 H 79.129028 Z m -22,0 h 14.548388 v 31.58065 H 57.129028 Z m 0,39.03226 h 14.548388 v 31.58064 H 57.129028 Z m 22,0 h 14.548388 v 31.58064 H 79.129028 Z" />
+    <path
+       id="circle34027"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+       d="M 112.85564 297.86657 A 40.908947 40.908947 0 0 0 109.09102 314.95959 A 40.908947 40.908947 0 0 0 112.85564 332.0526 L 187.14413 332.0526 A 40.908947 40.908947 0 0 0 190.90876 314.95959 A 40.908947 40.908947 0 0 0 187.16377 297.86657 L 112.85564 297.86657 z " />
+    <text
+       xml:space="preserve"
+       style="font-size:9.93766px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#ffb804;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="127.22744"
+       y="270.35858"
+       id="text35536"
+       transform="scale(0.84618957,1.1817683)"><tspan
+         sodipodi:role="line"
+         id="tspan35534"
+         style="fill:#ffb804;fill-opacity:1;stroke-width:0"
+         x="127.22744"
+         y="270.35858">ショッピングセンター</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.1585px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="124.05036"
+       y="272.29868"
+       id="text49107"
+       transform="scale(1.0572705,0.94583175)"><tspan
+         sodipodi:role="line"
+         id="tspan49105"
+         style="fill:#000000;fill-opacity:1;stroke-width:0"
+         x="124.05036"
+         y="272.29868">寿司バー</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:15.4369px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#50e55a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="124.1011"
+       y="271.70438"
+       id="text48239"
+       transform="scale(1.0572705,0.94583176)"><tspan
+         sodipodi:role="line"
+         id="tspan48237"
+         style="stroke-width:0;fill:#50e55a;fill-opacity:1"
+         x="124.1011"
+         y="271.70438">寿司バー</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14.3474px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#540b0b;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="150.33505"
+       y="193.53017"
+       id="text50617"
+       transform="scale(0.84153181,1.1883092)"><tspan
+         sodipodi:role="line"
+         id="tspan50615"
+         style="fill:#540b0b;fill-opacity:1;stroke-width:0"
+         x="150.33505"
+         y="193.53017">ビデオゲーム</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13.7179px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="151.06361"
+       y="192.8607"
+       id="text50613"
+       transform="scale(0.84153178,1.1883092)"><tspan
+         sodipodi:role="line"
+         id="tspan50611"
+         style="stroke-width:0;fill:#ffffff;fill-opacity:1"
+         x="151.06361"
+         y="192.8607">ビデオゲーム</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:30.1589px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#6936ac;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="105.04581"
+       y="192.69159"
+       id="text52248"><tspan
+         sodipodi:role="line"
+         id="tspan52246"
+         style="fill:#6936ac;fill-opacity:1;stroke-width:0"
+         x="105.04581"
+         y="192.69159">図書館</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:29.3812px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#211136;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="105.1248"
+       y="192.05667"
+       id="text52194"><tspan
+         sodipodi:role="line"
+         id="tspan52192"
+         style="stroke-width:0;fill:#211136;fill-opacity:1"
+         x="105.1248"
+         y="192.05667">図書館</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.998px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#6b6c0e;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="114.98042"
+       y="138.81319"
+       id="text53172"><tspan
+         sodipodi:role="line"
+         id="tspan53170"
+         style="fill:#6b6c0e;fill-opacity:1;stroke-width:0"
+         x="114.98042"
+         y="138.81319">電子機器</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.3216px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#b4b717;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="117.03802"
+       y="138.26889"
+       id="text53030"><tspan
+         sodipodi:role="line"
+         id="tspan53028"
+         style="stroke-width:0;fill:#b4b717;fill-opacity:1"
+         x="117.03802"
+         y="138.26889">電子機器</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.4184px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#c12a2a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="111.83327"
+       y="65.666565"
+       id="text53954"><tspan
+         sodipodi:role="line"
+         style="fill:#c12a2a;fill-opacity:1;stroke-width:0"
+         x="111.83327"
+         y="65.666565"
+         id="tspan56236">カンフー</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.39522px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#c12a2a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="123.47594"
+       y="75.905945"
+       id="text59146"><tspan
+         sodipodi:role="line"
+         id="tspan59144"
+         style="stroke-width:0"
+         x="123.47594"
+         y="75.905945">0467-67-6078</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.361px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#c12a2a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="88.248749"
+       y="42.130917"
+       id="text67136"
+       transform="scale(0.56260304,1.7774522)"><tspan
+         sodipodi:role="line"
+         id="tspan67134"
+         style="stroke-width:0"
+         x="88.248749"
+         y="42.130917">タイヤ ミシュラン</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.361px;font-family:'Javanese Text';-inkscape-font-specification:'Javanese Text';fill:#c12a2a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+       x="366.61493"
+       y="42.272568"
+       id="text67870"
+       transform="scale(0.56260304,1.7774522)"><tspan
+         sodipodi:role="line"
+         id="tspan67868"
+         style="stroke-width:0"
+         x="366.61493"
+         y="42.272568">マクドナルド</tspan></text>
   </g>
 </svg>
