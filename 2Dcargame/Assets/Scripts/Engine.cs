@@ -12,7 +12,8 @@ public class Engine : MonoBehaviour
     public int highestGear;
     public bool engineOn;
     public bool engineStarting;
-    public float hp;
+    public static float hp;
+    public float peakHp;
 
 
     public Rigidbody2D rb;
@@ -35,7 +36,7 @@ public class Engine : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        Debug.Log(hp);
         if(Input.GetKeyDown("v"))// && (engineStarting = false))
         {
             if(engineOn == true)
@@ -68,6 +69,18 @@ public class Engine : MonoBehaviour
                 }
             }
         }
+        if (engineOn)
+        {
+            hp = -0.000005f * Mathf.Pow(rpm - 7000, 2) + peakHp;
+            //rpm = CarController.rotationalSpeed * 10;
+            if(!Input.GetKey("d"))
+            {
+                rpm = idleRpm;
+            }
+            
+        }
+
+
         IEnumerator PlaySound()
         {
             audioSource.clip = starterSound;
