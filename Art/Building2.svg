@@ -9,9 +9,12 @@
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    sodipodi:docname="Building2.svg"
+<<<<<<< HEAD
+=======
    inkscape:export-filename="..\2Dcargame\Assets\Images\Building2.png"
-   inkscape:export-xdpi="241.90475"
-   inkscape:export-ydpi="241.90475"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+>>>>>>> parent of d296593 (Background parallax update)
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -28,8 +31,13 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.52724989"
+<<<<<<< HEAD
      inkscape:cx="792.79296"
      inkscape:cy="701.75454"
+=======
+     inkscape:cx="477.95174"
+     inkscape:cy="692.27137"
+>>>>>>> parent of 7bee2be (Update)
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"

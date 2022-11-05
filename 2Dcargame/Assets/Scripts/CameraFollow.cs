@@ -8,11 +8,21 @@ public class CameraFollow : MonoBehaviour
     public Vector3 offset;
     public Vector3 translate;
     public Camera mainCamera;
+    public float desiredDuration = 0.5f;
+    private float elapsedTime;
+    private float percentageComplete;
     public float camFactor;
 
     private void Start()
     {
         camFactor = 3;
+    }
+    void Update()
+    {
+       
+
+        elapsedTime += Time.deltaTime;
+        percentageComplete = elapsedTime / desiredDuration;
     }
 
     public void zoom(float velocity)
