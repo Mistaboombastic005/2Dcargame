@@ -1,0 +1,77 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+
+public class CarCustomization : MonoBehaviour
+{
+    [System.Serializable]
+    public class body
+    {
+        public string name;
+        public GameObject bodyGO;
+    }
+    public body[] _body;
+    [System.Serializable]
+    public class wheels
+    {
+        public string name;
+        public GameObject wheelGO;
+    }
+    public wheels[] _wheel;
+    
+    public GameObject currentCarBody;
+    public GameObject CurrentFWheel;
+    public GameObject CurrentRWheel;
+    private GameObject InstanceFWheel;
+    private GameObject InstanceRWheel;
+    public int wheelNumber;
+
+
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        currentCarBody = _body[0].bodyGO;
+        currentCarBody = (GameObject)Instantiate(currentCarBody, new Vector3(-5, 5, 0), Quaternion.identity);
+
+
+
+
+        InstanceRWheel = (GameObject)Instantiate(CurrentRWheel, currentCarBody.transform.GetChild(1).position, Quaternion.identity);
+        InstanceRWheel.transform.parent = currentCarBody.transform.GetChild(1);
+        InstanceFWheel = (GameObject)Instantiate(CurrentFWheel, currentCarBody.transform.GetChild(0).position, Quaternion.identity);
+        InstanceFWheel.transform.parent = currentCarBody.transform.GetChild(0);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position = currentCarBody.transform.position;        
+        
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            wheelNumber++;
+            ChangeWheel();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            wheelNumber--;
+            ChangeWheel();
+        }
+
+        wheelNumber = Mathf.Clamp(wheelNumber, 0, 1);
+        CurrentFWheel = _wheel[wheelNumber].wheelGO;
+        CurrentRWheel = _wheel[wheelNumber].wheelGO;
+    }
+
+    public void ChangeWheel()
+    {
+        Destroy(InstanceRWheel);
+        Destroy(InstanceFWheel);
+        InstanceRWheel = (GameObject)Instantiate(CurrentRWheel, currentCarBody.transform.GetChild(1).position, Quaternion.identity);
+        InstanceFWheel = (GameObject)Instantiate(CurrentFWheel, currentCarBody.transform.GetChild(0).position, Quaternion.identity);
+        InstanceRWheel.transform.parent = currentCarBody.transform.GetChild(1);
+        InstanceFWheel.transform.parent = currentCarBody.transform.GetChild(0);
+    }
+}
