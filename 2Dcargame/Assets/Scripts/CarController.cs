@@ -13,6 +13,7 @@ public class CarController : MonoBehaviour
     public CameraFollow _cameraFollow;
     [SerializeField] Speedometer _speedometer;
     public static float rotationalSpeed;
+    public static float speed;
 
 
 
@@ -26,12 +27,13 @@ public class CarController : MonoBehaviour
 
 
     public float rpm;
+    public static float staticRPM;
     public float rpmLimit;
     public float idleRpm;
-    public int gearSelected;
+    public static int gearSelected;
     public int highestGear;
     public static bool transEngaged;
-    public static bool engineOn;
+    public static bool engineOn = false;
     public bool engineStarting;
     public static float hp;
     public float peakHp;
@@ -39,34 +41,35 @@ public class CarController : MonoBehaviour
     public float peakRpm;
     public AnimationCurve TorqueCurve;
     public AnimationCurve soundVolumeCurve;
+    public AnimationCurve breakForce;
 
 
     public Rigidbody2D rb1;
     public static float KM_H;
     public CameraFollow _cameraFollow1;
 
-    public AudioSource audioSource1;
-    private AudioClip currentClip1;
-    private AudioClip currentClip2;
-    public AudioClip starterSound;
-    public AudioClip idleSound;
-    public AudioClip firstSound;
-    private bool playSound;
 
-    private void Start()
+    void Update()
     {
-        //currentClip1 = idleSound;
-    }
-
-    void FixedUpdate()
-    {
-
+        staticRPM = rpm;
+        
+        
+        if(Input.GetKey("a") || MobileInput.brake)
+        {
+            frontTire.angularVelocity = Mathf.Lerp(frontTire.angularVelocity, 0, 5f);
+        }
+        else
+        {
+            frontTire.angularDrag = 0;
+        }
+        
         rotationalSpeed = -1 * backTire.angularVelocity;
         //awd
         if (engineOn && transEngaged)
         {
-            if (Input.GetKey("d") && drivetrain == "awd")
+            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "awd")
             {
+                Debug.Log("HUH");
 
                 frontTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
                 backTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
@@ -81,7 +84,7 @@ public class CarController : MonoBehaviour
 
             //rwd
 
-            if (Input.GetKey("d") && drivetrain == "rwd")
+            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "rwd")
             {
                 backTire.AddTorque(Engine.hp * Engine.gearRatio * -1 * Time.deltaTime);
             }
@@ -94,50 +97,20 @@ public class CarController : MonoBehaviour
 
             //fwd
 
-            if (Input.GetKey("d") && drivetrain == "fwd")
+            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "fwd")
             {
-                frontTire.AddTorque(Engine.hp * Engine.gearRatio * -1 * Time.deltaTime);
+                frontTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
             }
-        }
-    }
-    
-    private void PlaySound()
-    {
-        if (playSound)
-        {
-            audioSource1.Play();
-            playSound = false;
-        }
-    }
-    
-    public void Update()
-    {
+        }   
+        
+        
+        
+        speed = velocity;
         GameObject Car = gameObject.transform.GetChild(1).gameObject;
 
         frontTire = gameObject.transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
         backTire = gameObject.transform.GetChild(1).gameObject.GetComponent<Rigidbody2D>();
 
-
-        audioSource1.clip = currentClip1;
-
-        if (engineOn)
-        {
-            audioSource1.pitch = rpm / 5000 + 0.84f;
-            if (!Input.GetKey("d") && rpm >= idleRpm && rpm <= 1000)
-            {
-                currentClip1 = idleSound;
-            }
-            if (Input.GetKey("d") && rpm >= 1000 && rpm <= 3000)
-            {
-                currentClip2 = firstSound;
-            }
-
-            if (Input.GetKey(KeyCode.Space))
-            {
-                audioSource1.Play();
-            }
-
-        }
 
         
         velocity = 3.6f * (rb.velocity.magnitude);
@@ -145,7 +118,7 @@ public class CarController : MonoBehaviour
         //_cameraFollow.zoom(velocity);
 
 
-        gearRatio = (_gears[gearSelected + 1].gearRatio) / 2;
+        gearRatio = (_gears[gearSelected + 1].gearRatio) / 3.4f;
 
         hp = TorqueCurve.Evaluate(rpm);
 
@@ -163,36 +136,22 @@ public class CarController : MonoBehaviour
                 gearSelected--;
             }
         }
-        //Debug.Log(hp);
-        if (Input.GetKeyDown("v") && (engineStarting == false))
+        if (Input.GetKeyDown("v") || MobileInput._startEngine)
         {
-            Debug.Log("KYS");
-            
-            if (engineOn == true)
-            {
-                engineOn = false;
-            }
-            else
-            {
-                engineStarting = true;
-                Debug.Log("WTF");
-            }
-
-        }
-        if (engineStarting)
-        {
-            StartCoroutine(PlaySound());
+            Debug.Log("engine started");
+            engineOn = true;
         }
         if (engineOn)
         {
+            
             if (rpm < idleRpm)
             {
-                rpm += 800 * Time.deltaTime;
+                //rpm += 800 * Time.deltaTime;
             }
 
             if (gearSelected != 0)
             {
-                rpm = Mathf.Abs((CarController.rotationalSpeed) * gearRatio * 5 + idleRpm);
+                rpm = Mathf.Lerp(rpm, Mathf.Abs((CarController.rotationalSpeed) * gearRatio * 2.2f + idleRpm), 0.05f);
             }
         }
         if (gearSelected != 0)
@@ -202,30 +161,21 @@ public class CarController : MonoBehaviour
         else
         {
             transEngaged = false;
-            if (Input.GetKey("d") && (rpm < rpmLimit))
+            if ((Input.GetKey("d") || MobileInput.gas) && (rpm < rpmLimit))
             {
                 rpm += 7000 * Time.deltaTime;
             }
             else
             {
-                rpm -= ((rpm - idleRpm) / 1.5f) * Time.deltaTime;
+                if (engineOn)
+                {
+                    rpm -= ((rpm - idleRpm) / 1.5f) * Time.deltaTime;
+                }
             }
         }
 
 
-        IEnumerator PlaySound()
-        {
-            engineStarting = false;
-            currentClip1 = starterSound;
-            audioSource1.clip = currentClip1;
-            audioSource1.Play();
-            audioSource1.loop = false;
-            yield return new WaitForSeconds(starterSound.length);
-            engineOn = true;
-            audioSource1.clip = idleSound;
-            audioSource1.Play();
-            audioSource1.loop = true;
-        }
+        
 
     }
 }

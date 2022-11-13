@@ -462,11 +462,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69f26257b59f323439eae48a428558db, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
+  m_Pitch: 1.0148023
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -586,7 +586,6 @@ MonoBehaviour:
   rpm: 0
   rpmLimit: 7600
   idleRpm: 800
-  gearSelected: 0
   highestGear: 5
   engineStarting: 0
   peakHp: 276
@@ -648,10 +647,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  breakForce:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rb1: {fileID: 8856846312956320819}
   _cameraFollow1: {fileID: 0}
   audioSource1: {fileID: -8771037669028149559}
-  audioSource2: {fileID: 8947288328796324511}
   starterSound: {fileID: 8300000, guid: 8f1eb83348ced4d4690c7d3511ea789b, type: 3}
   idleSound: {fileID: 8300000, guid: 69f26257b59f323439eae48a428558db, type: 3}
   firstSound: {fileID: 8300000, guid: ab55e46d2495e1d4cbbfd9603261ec20, type: 3}

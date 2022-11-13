@@ -8,9 +8,10 @@ public class Speedometer : MonoBehaviour
     private const float maxSpeedAngle = -20f;
     private const float zeroSpeedAngle = 210f;
     public Transform needleTransform;
-    public Rigidbody2D car;
     public TextMeshProUGUI Km_HText;
-
+    public TextMeshProUGUI gearText;
+    public float Rpm;
+    public int gear;
     private void Awake()
     {
         needleTransform = transform.Find("Needle");
@@ -18,17 +19,21 @@ public class Speedometer : MonoBehaviour
 
     private void Update()
     {
-        needleTransform.eulerAngles = new Vector3(0, 0, GetSpeedRotation(car.velocity.magnitude * 3.6f));
+        Rpm = CarController.staticRPM;
 
-        Km_HText.text = ((int)(car.velocity.magnitude * 3.6f)).ToString();
+        gear = CarController.gearSelected;
+
+        gearText.text = gear.ToString();
+
+        needleTransform.eulerAngles = new Vector3(0, 0, GetSpeedRotation(Rpm));
+
+        Km_HText.text = ((int)(CarController.speed)).ToString();
     }
 
     public float GetSpeedRotation(float speed)
     {
         float totalAngleSize = zeroSpeedAngle - maxSpeedAngle;
 
-        return zeroSpeedAngle - speed / 200 * totalAngleSize;
+        return zeroSpeedAngle - speed / 10000 * totalAngleSize;
     }
-
-
 }

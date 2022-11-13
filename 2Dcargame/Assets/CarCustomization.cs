@@ -26,13 +26,14 @@ public class CarCustomization : MonoBehaviour
     private GameObject InstanceFWheel;
     private GameObject InstanceRWheel;
     public int wheelNumber;
+    public int carNumber;
 
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        currentCarBody = _body[0].bodyGO;
+        currentCarBody = _body[carNumber].bodyGO;
         currentCarBody = (GameObject)Instantiate(currentCarBody, new Vector3(-5, 5, 0), Quaternion.identity);
 
 
@@ -60,7 +61,7 @@ public class CarCustomization : MonoBehaviour
             ChangeWheel();
         }
 
-        wheelNumber = Mathf.Clamp(wheelNumber, 0, 1);
+        wheelNumber = Mathf.Clamp(wheelNumber, 0, 3);
         CurrentFWheel = _wheel[wheelNumber].wheelGO;
         CurrentRWheel = _wheel[wheelNumber].wheelGO;
     }
