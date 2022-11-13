@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class Engine : MonoBehaviour
 {
+    [System.Serializable]
+    public class gears
+    {
+        public int GearNumber;
+        public float gearRatio;
+    }
+    public gears[] _gears;
+    
+    
     public float rpm;
     public float rpmLimit;
     public float idleRpm;
-    public int nbGears;
     public int gearSelected;
     public int highestGear;
-    public bool engineOn;
+    public static bool transEngaged;
+    public static bool engineOn;
     public bool engineStarting;
     public static float hp;
     public float peakHp;
+    public static float gearRatio;
+    public float peakRpm;
+    public AnimationCurve curve;
 
 
     public Rigidbody2D rb;
@@ -27,19 +39,31 @@ public class Engine : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        engineOn = false;
-        gearSelected = 0;
-        engineStarting = false;
-    }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Debug.Log(hp);
-        if(Input.GetKeyDown("v"))// && (engineStarting = false))
+        gearRatio = (_gears[gearSelected + 1].gearRatio)/5;
+
+        hp = curve.Evaluate(rpm);
+
+        if (Input.GetKeyDown("x"))
         {
-            if(engineOn == true)
+            if (gearSelected < highestGear)
+            {
+                gearSelected++;
+            }
+        }
+        if (Input.GetKeyDown("z"))
+        {
+            if (gearSelected > -1)
+            {
+                gearSelected--;
+            }
+        }
+        Debug.Log(hp);
+        if (Input.GetKeyDown("v"))// && (engineStarting = false))
+        {
+            if (engineOn == true)
             {
                 engineOn = false;
             }
@@ -47,50 +71,58 @@ public class Engine : MonoBehaviour
             {
                 engineStarting = true;
             }
-            audioSource.clip = starterSound;
-            audioSource.Play();
-            StartCoroutine(PlaySound());
-        }
 
-        if (Input.GetKey("x"))
-        {
-            if(gearSelected < highestGear)
-            {
-                gearSelected += 1;
-            }
         }
-        if(Input.GetKey("z"))
+        if (engineStarting)
         {
-            if(gearSelected > -1)
-            {
-                if (rpm < rpmLimit - 1000)
-                {
-                    gearSelected -= 1;
-                }
-            }
+            StartCoroutine(PlaySound());
         }
         if (engineOn)
         {
-            hp = -0.000005f * Mathf.Pow(rpm - 7000, 2) + peakHp;
-            //rpm = CarController.rotationalSpeed * 10;
-            if(!Input.GetKey("d"))
+            if(rpm < idleRpm)
             {
-                rpm = idleRpm;
+                rpm += 800 * Time.deltaTime;
             }
-            
+
+            if (gearSelected != 0)
+            {
+                rpm = Mathf.Abs((CarController.rotationalSpeed) * gearRatio * 3 + idleRpm);
+            }
+        }
+        if (gearSelected != 0)
+        {
+            transEngaged = true;
+        }
+        else
+        {
+            transEngaged = false;
+            if (Input.GetKey("d") && (rpm < rpmLimit))
+            {
+                rpm += 3000 * Time.deltaTime;
+            }
+            else
+            {
+                rpm -= ((rpm - idleRpm) / 1.5f) * Time.deltaTime;
+            }
         }
 
 
         IEnumerator PlaySound()
         {
+            engineStarting = false;
             audioSource.clip = starterSound;
             audioSource.Play();
+            audioSource.loop = false;
             yield return new WaitForSeconds(starterSound.length);
-            engineStarting = false;
+            engineOn = true;
             audioSource.clip = idleSound;
             audioSource.Play();
             audioSource.loop = true;
         }
+    }
+    private void FixedUpdate()
+    {
+        
     }
 
 

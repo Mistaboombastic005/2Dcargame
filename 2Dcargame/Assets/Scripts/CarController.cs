@@ -9,29 +9,71 @@ public class CarController : MonoBehaviour
     public Rigidbody2D rb;
     public float Enginehp;
     public string drivetrain;
-    private float velocity;
+    public float velocity;
     public CameraFollow _cameraFollow;
     [SerializeField] Speedometer _speedometer;
     public static float rotationalSpeed;
+    public static float speed;
 
-    void FixedUpdate()
+
+
+    [System.Serializable]
+    public class gears
     {
+        public int GearNumber;
+        public float gearRatio;
+    }
+    public gears[] _gears;
 
+
+    public float rpm;
+    public static float staticRPM;
+    public float rpmLimit;
+    public float idleRpm;
+    public static int gearSelected;
+    public int highestGear;
+    public static bool transEngaged;
+    public static bool engineOn = false;
+    public bool engineStarting;
+    public static float hp;
+    public float peakHp;
+    public static float gearRatio;
+    public float peakRpm;
+    public AnimationCurve TorqueCurve;
+    public AnimationCurve soundVolumeCurve;
+    public AnimationCurve breakForce;
+
+
+    public Rigidbody2D rb1;
+    public static float KM_H;
+    public CameraFollow _cameraFollow1;
+
+
+    void Update()
+    {
+        staticRPM = rpm;
+        
+        
+        if(Input.GetKey("a") || MobileInput.brake)
+        {
+            frontTire.angularVelocity = Mathf.Lerp(frontTire.angularVelocity, 0, 5f);
+        }
+        else
+        {
+            frontTire.angularDrag = 0;
+        }
+        
         rotationalSpeed = -1 * backTire.angularVelocity;
         //awd
-
-        if (Input.GetKey("d") && drivetrain == "awd")
+        if (engineOn && transEngaged)
         {
+            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "awd")
+            {
+                Debug.Log("HUH");
 
-            frontTire.AddTorque(Engine.hp * -1 * Time.deltaTime);
-            backTire.AddTorque(Engine.hp * -1 * Time.deltaTime);
-        }
-        if (Input.GetKey("a") && drivetrain == "awd")
-        {
-
-            frontTire.AddTorque(Engine.hp * 1 * Time.deltaTime);
-            backTire.AddTorque(Engine.hp * 1 * Time.deltaTime);
-        }
+                frontTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
+                backTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
+            }
 
 
 
@@ -39,38 +81,101 @@ public class CarController : MonoBehaviour
 
 
 
-        //rwd
 
-        if (Input.GetKey("d") && drivetrain == "rwd")
-        {    
-            backTire.AddTorque(Engine.hp * -1 * Time.deltaTime);
-        }
-        if (Input.GetKey("a") && drivetrain == "rwd")
-        {
-            backTire.AddTorque(Engine.hp * 1 * Time.deltaTime);
-        }
+            //rwd
+
+            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "rwd")
+            {
+                backTire.AddTorque(Engine.hp * Engine.gearRatio * -1 * Time.deltaTime);
+            }
 
 
 
 
 
 
-        //fwd
+
+            //fwd
+
+            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "fwd")
+            {
+                frontTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
+            }
+        }   
         
-        if (Input.GetKey("d") && drivetrain == "fwd")
-        {
-            frontTire.AddTorque(Engine.hp * -1 * Time.deltaTime);
-        }
-        if (Input.GetKey("a") && drivetrain == "fwd")
-        {
-            frontTire.AddTorque(Engine.hp * 1 * Time.deltaTime);
-        }
-    }
-    private void Update()
-    {
-        velocity = (rb.velocity.magnitude);
+        
+        
+        speed = velocity;
+        GameObject Car = gameObject.transform.GetChild(1).gameObject;
+
+        frontTire = gameObject.transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
+        backTire = gameObject.transform.GetChild(1).gameObject.GetComponent<Rigidbody2D>();
+
+
+        
+        velocity = 3.6f * (rb.velocity.magnitude);
 
         //_cameraFollow.zoom(velocity);
-    }
 
+
+        gearRatio = (_gears[gearSelected + 1].gearRatio) / 3.4f;
+
+        hp = TorqueCurve.Evaluate(rpm);
+
+        if (Input.GetKeyDown("x"))
+        {
+            if (gearSelected < highestGear)
+            {
+                gearSelected++;
+            }
+        }
+        if (Input.GetKeyDown("z"))
+        {
+            if (gearSelected > -1)
+            {
+                gearSelected--;
+            }
+        }
+        if (Input.GetKeyDown("v") || MobileInput._startEngine)
+        {
+            Debug.Log("engine started");
+            engineOn = true;
+        }
+        if (engineOn)
+        {
+            
+            if (rpm < idleRpm)
+            {
+                //rpm += 800 * Time.deltaTime;
+            }
+
+            if (gearSelected != 0)
+            {
+                rpm = Mathf.Lerp(rpm, Mathf.Abs((CarController.rotationalSpeed) * gearRatio * 2.2f + idleRpm), 0.05f);
+            }
+        }
+        if (gearSelected != 0)
+        {
+            transEngaged = true;
+        }
+        else
+        {
+            transEngaged = false;
+            if ((Input.GetKey("d") || MobileInput.gas) && (rpm < rpmLimit))
+            {
+                rpm += 7000 * Time.deltaTime;
+            }
+            else
+            {
+                if (engineOn)
+                {
+                    rpm -= ((rpm - idleRpm) / 1.5f) * Time.deltaTime;
+                }
+            }
+        }
+
+
+        
+
+    }
 }
