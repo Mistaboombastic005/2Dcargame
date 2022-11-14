@@ -30,7 +30,7 @@ public class CarController : MonoBehaviour
     public static float staticRPM;
     public float rpmLimit;
     public float idleRpm;
-    public static int gearSelected;
+    public static int gearSelected = 0;
     public int highestGear;
     public static bool transEngaged;
     public static bool engineOn = false;
@@ -49,8 +49,17 @@ public class CarController : MonoBehaviour
     public CameraFollow _cameraFollow1;
 
 
+    private void Start()
+    {
+        engineOn = false;
+    }
+
+
     void Update()
     {
+        gearSelected = Mathf.Clamp(gearSelected, -1, highestGear);
+
+        
         staticRPM = rpm;
         
         
@@ -136,10 +145,16 @@ public class CarController : MonoBehaviour
                 gearSelected--;
             }
         }
-        if (Input.GetKeyDown("v") || MobileInput._startEngine)
+        if (Input.GetKeyDown("v"))
         {
-            Debug.Log("engine started");
-            engineOn = true;
+            if (!engineOn)
+            {
+                engineOn = true;
+            }
+            else
+            {
+                engineOn = false;
+            }
         }
         if (engineOn)
         {

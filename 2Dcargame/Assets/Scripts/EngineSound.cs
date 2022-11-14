@@ -20,6 +20,12 @@ public class EngineSound : MonoBehaviour
     public AnimationCurve pitchLow;
     public AnimationCurve pitchMed;
     public AnimationCurve pitchHigh;
+    public static bool startEngine;
+
+
+    private void Start()
+    {
+    }
 
 
     void Update()
@@ -42,16 +48,45 @@ public class EngineSound : MonoBehaviour
 
         if (Input.GetKeyDown("v") || MobileInput._startEngine)
         {
-            StartCoroutine("playSound1");
+            if (CarController.engineOn)
+            {
+                StartCoroutine("playSound1");
+                startEngine = true;
+            }
+            else
+            {
+                startEngine = false;
+            }
         }
+
+        if (!CarController.engineOn)
+        {
+            _audioSource1.mute = true;
+            _audioSource2.mute = true;
+            _audioSource3.mute = true;
+            _audioSource4.mute = true;
+        }
+        else
+        {
+            _audioSource1.mute = false;
+        }
+
+        Debug.Log(CarController.engineOn);
     }
+
+
+
 
     IEnumerator playSound1()
     {
+        startEngine = true;
         _audioSource1.loop = false;
         _audioSource1.clip = start;
         _audioSource1.Play();
         yield return new WaitForSeconds(start.length);
+        _audioSource2.mute = false;
+        _audioSource3.mute = false;
+        _audioSource4.mute = false;
         StartCoroutine("playSound2");
         StartCoroutine("playSound3");
         StartCoroutine("playSound4");
@@ -60,7 +95,7 @@ public class EngineSound : MonoBehaviour
         _audioSource1.Play();
     }
 
-    IEnumerator playSound2()
+    public IEnumerator playSound2()
     {
         _audioSource2.loop = true;
         _audioSource2.clip = low;

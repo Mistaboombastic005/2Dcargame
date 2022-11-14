@@ -9,16 +9,9 @@ public class MobileInput : MonoBehaviour
     public static bool gas;
     public static bool brake;
     public static bool _startEngine;
-    private bool startClicked;
 
 
-    public void Update()
-    {
-        Debug.Log("_startEngine: " + _startEngine);
-
-        
-            
-    }
+    
 
     public void GasInput(bool gassing)
     {
@@ -32,16 +25,36 @@ public class MobileInput : MonoBehaviour
 
     public void startEngine()
     {
-        _startEngine = true;
-        StartCoroutine("startEngineI");
+        if (!CarController.engineOn)
+        {
+            _startEngine = true;
+            CarController.engineOn = true;
+        }
+        else
+        {
+            _startEngine = false;
+            CarController.engineOn = false;
+        }
     }
 
-    public IEnumerator startEngineI()
+    private void Update()
     {
-        if (_startEngine)
+        if (CarController.engineOn)
         {
-            yield return new WaitForSeconds(0.0001f);
             _startEngine = false;
         }
+    }
+
+
+
+
+    public void UpGear()
+    {
+        CarController.gearSelected++;
+    }
+
+    public void DownGear()
+    {
+        CarController.gearSelected--;
     }
 }
