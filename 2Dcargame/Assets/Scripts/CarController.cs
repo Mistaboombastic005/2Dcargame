@@ -52,6 +52,7 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         engineOn = false;
+        _cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
     }
 
 
@@ -124,7 +125,7 @@ public class CarController : MonoBehaviour
         
         velocity = 3.6f * (rb.velocity.magnitude);
 
-        //_cameraFollow.zoom(velocity);
+        _cameraFollow.zoom(velocity);
 
 
         gearRatio = (_gears[gearSelected + 1].gearRatio) / 3.4f;
