@@ -34,7 +34,7 @@ public class CarCustomization : MonoBehaviour
     void Awake()
     {
         currentCarBody = _body[carNumber].bodyGO;
-        currentCarBody = (GameObject)Instantiate(currentCarBody, new Vector3(-5, 5, 0), Quaternion.identity);
+        currentCarBody = (GameObject)Instantiate(currentCarBody, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
 
 
 
