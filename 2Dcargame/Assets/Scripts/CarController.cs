@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
@@ -41,48 +42,76 @@ public class CarController : MonoBehaviour
     public float peakRpm;
     public AnimationCurve TorqueCurve;
     public AnimationCurve soundVolumeCurve;
-    public AnimationCurve breakForce;
+    public float breakForce;
 
 
     public Rigidbody2D rb1;
     public static float KM_H;
     public CameraFollow _cameraFollow1;
+    public GameObject slider;
+    public float gasValue;
 
 
     private void Start()
     {
         engineOn = false;
         _cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
-    }
+        gearSelected = 0;
 
+        slider = GameObject.FindGameObjectWithTag("Slider");
+
+
+    }
 
     void Update()
     {
         gearSelected = Mathf.Clamp(gearSelected, -1, highestGear);
 
+        gasValue = slider.GetComponent<Slider>().value;
+
+        if (!MobileInput.gas)
+        {
+            
+        }
         
+
         staticRPM = rpm;
-        
-        
-        if(Input.GetKey("a") || MobileInput.brake)
+
+
+        if (Input.GetKey("a") || MobileInput.brake)
         {
-            frontTire.angularVelocity = Mathf.Lerp(frontTire.angularVelocity, 0, 5f);
-        }
-        else
-        {
-            frontTire.angularDrag = 0;
-        }
-        
-        rotationalSpeed = -1 * backTire.angularVelocity;
+            if (rotationalSpeed > 0)
+            {
+                if (rotationalSpeed < breakForce)
+                {
+                    frontTire.angularVelocity -= frontTire.angularVelocity;
+                }
+                else
+                {
+                    frontTire.angularVelocity += breakForce;
+                }
+            }
+            if (rotationalSpeed < 0)
+            {
+                if (rotationalSpeed > breakForce)
+                {
+                    frontTire.angularVelocity += frontTire.angularVelocity;
+                }
+                else
+                {
+                    frontTire.angularVelocity -= breakForce;
+                }
+
+            }
+        }        
+        rotationalSpeed = -1 * frontTire.angularVelocity;
         //awd
         if (engineOn && transEngaged)
         {
-            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "awd")
+            if (drivetrain == "awd")
             {
-                Debug.Log("HUH");
-
-                frontTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
-                backTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
+                frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
+                backTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
             }
 
 
@@ -94,9 +123,9 @@ public class CarController : MonoBehaviour
 
             //rwd
 
-            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "rwd")
+            if (drivetrain == "rwd")
             {
-                backTire.AddTorque(Engine.hp * Engine.gearRatio * -1 * Time.deltaTime);
+                backTire.AddTorque(Engine.hp * gasValue * Engine.gearRatio * -1 * Time.deltaTime);
             }
 
 
@@ -107,9 +136,9 @@ public class CarController : MonoBehaviour
 
             //fwd
 
-            if ((Input.GetKey("d") || MobileInput.gas) && drivetrain == "fwd")
+            if (drivetrain == "fwd")
             {
-                frontTire.AddTorque(hp * gearRatio * -1 * Time.deltaTime);
+                frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
             }
         }   
         
@@ -162,12 +191,12 @@ public class CarController : MonoBehaviour
             
             if (rpm < idleRpm)
             {
-                //rpm += 800 * Time.deltaTime;
+                rpm += 800 * Time.deltaTime;
             }
 
             if (gearSelected != 0)
             {
-                rpm = Mathf.Lerp(rpm, Mathf.Abs((CarController.rotationalSpeed) * gearRatio * 2.2f + idleRpm), 0.05f);
+                rpm = Mathf.Lerp(rpm, Mathf.Abs(CarController.rotationalSpeed * gearRatio) * 2.2f + idleRpm, 0.05f);
             }
         }
         if (gearSelected != 0)

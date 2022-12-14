@@ -38,14 +38,20 @@ public class CarCustomization : MonoBehaviour
 
 
 
-
+        CurrentFWheel = _wheel[wheelNumber].wheelGO;
+        CurrentRWheel = _wheel[wheelNumber].wheelGO;
         InstanceRWheel = (GameObject)Instantiate(CurrentRWheel, currentCarBody.transform.GetChild(1).position, Quaternion.identity);
         InstanceRWheel.transform.parent = currentCarBody.transform.GetChild(1);
         InstanceFWheel = (GameObject)Instantiate(CurrentFWheel, currentCarBody.transform.GetChild(0).position, Quaternion.identity);
         InstanceFWheel.transform.parent = currentCarBody.transform.GetChild(0);
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        ChangeWheel();
+    }
+
+
     void Update()
     {
         transform.position = currentCarBody.transform.position;        

@@ -70,8 +70,6 @@ public class EngineSound : MonoBehaviour
         {
             _audioSource1.mute = false;
         }
-
-        Debug.Log(CarController.engineOn);
     }
 
 

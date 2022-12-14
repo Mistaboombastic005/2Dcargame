@@ -496,8 +496,8 @@ MonoBehaviour:
       inWeight: 0.07980342
       outWeight: 0.5974285
     - serializedVersion: 3
-      time: 6698.27
-      value: 162.17377
+      time: 7563.7344
+      value: 157.37637
       inSlope: -0.10060001
       outSlope: -0.10060001
       tangentMode: 0
@@ -505,13 +505,13 @@ MonoBehaviour:
       inWeight: 0.32293692
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 7140.7017
-      value: -55.506123
-      inSlope: -0.36847275
-      outSlope: -0.36847275
+      time: 8644.97
+      value: -50.964478
+      inSlope: -Infinity
+      outSlope: -Infinity
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.04285903
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -540,48 +540,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  breakForce:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -100
-      value: -0.010631561
-      inSlope: -0.00009059602
-      outSlope: -0.00009059602
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0
-      value: -0.014940739
-      inSlope: 0.0021354011
-      outSlope: 0.0021354011
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.237114
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 8.936459
-      value: 1.9431536
-      inSlope: 0.21308784
-      outSlope: 0.21308784
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.8705738
-      outWeight: 0.041511547
-    - serializedVersion: 3
-      time: 201.22218
-      value: 22.548676
-      inSlope: 0.044869192
-      outSlope: 0.044869192
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.15253808
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  breakForce: 800
   rb1: {fileID: 5730578944888709685}
   _cameraFollow1: {fileID: 0}
 --- !u!82 &4499434865250577125
@@ -930,8 +889,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.06885277
     - serializedVersion: 3
-      time: 7700
-      value: 1.2937652
+      time: 7600.479
+      value: 1.3042251
       inSlope: 0.00017327811
       outSlope: 0.00017327811
       tangentMode: 0
