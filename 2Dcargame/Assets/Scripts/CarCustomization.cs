@@ -19,7 +19,27 @@ public class CarCustomization : MonoBehaviour
         public GameObject wheelGO;
     }
     public wheels[] _wheel;
-    
+
+    [System.Serializable]
+    public class sound
+    {
+        public string EngineName;
+        public AudioClip start;
+        public AudioClip idle;
+        public AudioClip low;
+        public AudioClip medium;
+        public AudioClip high;
+        public AnimationCurve volumeIdle;
+        public AnimationCurve volumeLow;
+        public AnimationCurve volumeMed;
+        public AnimationCurve volumeHigh;
+        public AnimationCurve pitchLow;
+        public AnimationCurve pitchMed;
+        public AnimationCurve pitchHigh;
+    }
+    public sound[] _sound;
+    public static sound[] _soundStatic;
+
     public GameObject currentCarBody;
     public GameObject CurrentFWheel;
     public GameObject CurrentRWheel;
@@ -27,6 +47,7 @@ public class CarCustomization : MonoBehaviour
     private GameObject InstanceRWheel;
     public int wheelNumber;
     public int carNumber;
+    public static int engineSound = 0;
 
 
 
@@ -54,6 +75,9 @@ public class CarCustomization : MonoBehaviour
 
     void Update()
     {
+        _soundStatic = _sound;
+        
+        
         transform.position = currentCarBody.transform.position;        
         
         if (Input.GetKeyDown(KeyCode.UpArrow))
