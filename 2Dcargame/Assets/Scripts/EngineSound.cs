@@ -70,6 +70,20 @@ public class EngineSound : MonoBehaviour
         {
             _audioSource1.mute = false;
         }
+
+
+        start = CarCustomization._soundStatic[CarCustomization.engineSound].start;
+        idle = CarCustomization._soundStatic[CarCustomization.engineSound].idle;
+        low = CarCustomization._soundStatic[CarCustomization.engineSound].low;
+        medium = CarCustomization._soundStatic[CarCustomization.engineSound].medium;
+        high = CarCustomization._soundStatic[CarCustomization.engineSound].high;
+        volumeIdle = CarCustomization._soundStatic[CarCustomization.engineSound].volumeIdle;
+        volumeLow = CarCustomization._soundStatic[CarCustomization.engineSound].volumeLow;
+        volumeMed = CarCustomization._soundStatic[CarCustomization.engineSound].volumeMed;
+        volumeHigh = CarCustomization._soundStatic[CarCustomization.engineSound].volumeHigh;
+        pitchLow = CarCustomization._soundStatic[CarCustomization.engineSound].pitchLow;
+        pitchMed = CarCustomization._soundStatic[CarCustomization.engineSound].pitchMed;
+        pitchHigh = CarCustomization._soundStatic[CarCustomization.engineSound].pitchHigh;
     }
 
 
