@@ -43,8 +43,6 @@ public class MobileInput : MonoBehaviour
         {
             _startEngine = false;
         }
-
-        Debug.Log(gas);
     }
 
 

@@ -47,13 +47,15 @@ public class CarCustomization : MonoBehaviour
     private GameObject InstanceRWheel;
     public int wheelNumber;
     public int carNumber;
-    public static int engineSound = 0;
+    public static int engineSound;
 
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        engineSound = 0;
+        
         currentCarBody = _body[carNumber].bodyGO;
         currentCarBody = (GameObject)Instantiate(currentCarBody, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
 

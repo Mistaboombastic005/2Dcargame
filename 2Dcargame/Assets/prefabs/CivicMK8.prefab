@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 564483927038738672}
   - component: {fileID: 696820590541665946}
   - component: {fileID: 4824081442059892510}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fwheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7478890525624131292}
   - component: {fileID: 498237899173919686}
   - component: {fileID: 7002685169608541792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CivicMK8
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -543,6 +543,8 @@ MonoBehaviour:
   breakForce: 800
   rb1: {fileID: 5730578944888709685}
   _cameraFollow1: {fileID: 0}
+  slider: {fileID: 0}
+  gasValue: 0
 --- !u!82 &4499434865250577125
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1198,7 +1200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8547909416125421545}
   - component: {fileID: 6883946981581582577}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CivicMK8body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1283,7 +1285,7 @@ GameObject:
   - component: {fileID: 2841710523476383361}
   - component: {fileID: 4540886115402608012}
   - component: {fileID: 2228521563583753920}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rwheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
