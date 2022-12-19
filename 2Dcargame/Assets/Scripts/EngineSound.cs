@@ -55,7 +55,7 @@ public class EngineSound : MonoBehaviour
             }
             else
             {
-                startEngine = false;
+                
             }
         }
 
@@ -96,6 +96,7 @@ public class EngineSound : MonoBehaviour
         _audioSource1.clip = start;
         _audioSource1.Play();
         yield return new WaitForSeconds(start.length);
+        startEngine = false;
         _audioSource2.mute = false;
         _audioSource3.mute = false;
         _audioSource4.mute = false;

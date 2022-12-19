@@ -9,7 +9,7 @@ public class CarController : MonoBehaviour
     public Rigidbody2D frontTire;
     public Rigidbody2D rb;
     public float Enginehp;
-    public string drivetrain;
+    public string driveTrain;
     public float velocity;
     public CameraFollow _cameraFollow;
     [SerializeField] Speedometer _speedometer;
@@ -50,6 +50,9 @@ public class CarController : MonoBehaviour
     public CameraFollow _cameraFollow1;
     public GameObject slider;
     public float gasValue;
+    public static bool startRace;
+    public static GameObject racer;
+    public static bool stagingRace;
 
 
     private void Start()
@@ -69,8 +72,14 @@ public class CarController : MonoBehaviour
 
         gasValue = slider.GetComponent<Slider>().value;
 
-        if (!MobileInput.gas)
+        if (stagingRace)
         {
+            transform.position = Vector3.Lerp(transform.position, racer.transform.position, 0.01f);
+        }
+        
+        if (startRace)
+        {
+            startRace = false;
             
         }
         
@@ -105,10 +114,11 @@ public class CarController : MonoBehaviour
             }
         }        
         rotationalSpeed = -1 * frontTire.angularVelocity;
+
         //awd
-        if (engineOn && transEngaged)
+        if (engineOn && transEngaged && !EngineSound.startEngine)
         {
-            if (drivetrain == "awd")
+            if (driveTrain == "awd")
             {
                 frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
                 backTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
@@ -123,7 +133,7 @@ public class CarController : MonoBehaviour
 
             //rwd
 
-            if (drivetrain == "rwd")
+            if (driveTrain == "rwd")
             {
                 backTire.AddTorque(Engine.hp * gasValue * Engine.gearRatio * -1 * Time.deltaTime);
             }
@@ -136,7 +146,7 @@ public class CarController : MonoBehaviour
 
             //fwd
 
-            if (drivetrain == "fwd")
+            if (driveTrain == "fwd")
             {
                 frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
             }
@@ -196,7 +206,7 @@ public class CarController : MonoBehaviour
 
             if (gearSelected != 0)
             {
-                rpm = Mathf.Lerp(rpm, Mathf.Abs(CarController.rotationalSpeed * gearRatio) * 2.2f + idleRpm, 0.05f);
+                rpm = Mathf.Lerp(rpm, Mathf.Abs(rotationalSpeed * gearRatio) * 2.2f + idleRpm, 0.05f);
             }
         }
         if (gearSelected != 0)
@@ -206,9 +216,10 @@ public class CarController : MonoBehaviour
         else
         {
             transEngaged = false;
-            if ((Input.GetKey("d") || MobileInput.gas) && (rpm < rpmLimit))
+            if (rpm < rpmLimit)
             {
-                rpm += 7000 * Time.deltaTime;
+                rpm = Mathf.Lerp(rpm, 7000 * gasValue,0.05f);
+                Debug.Log(gasValue);
             }
             else
             {

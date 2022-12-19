@@ -446,7 +446,7 @@ MonoBehaviour:
   frontTire: {fileID: 4824081442059892510}
   rb: {fileID: 5730578944888709685}
   Enginehp: 0
-  drivetrain: fwd
+  driveTrain: awd
   velocity: 0
   _cameraFollow: {fileID: 0}
   _speedometer: {fileID: 0}
