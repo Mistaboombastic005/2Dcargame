@@ -52,7 +52,7 @@ public class CarController : MonoBehaviour
     public float gasValue;
     public static bool startRace;
     public static GameObject racer;
-    public static bool stagingRace;
+    public static bool stagingRace = false;
 
 
     private void Start()
@@ -74,7 +74,7 @@ public class CarController : MonoBehaviour
 
         if (stagingRace)
         {
-            transform.position = Vector3.Lerp(transform.position, racer.transform.position, 0.01f);
+            
         }
         
         if (startRace)
@@ -219,7 +219,6 @@ public class CarController : MonoBehaviour
             if (rpm < rpmLimit)
             {
                 rpm = Mathf.Lerp(rpm, 7000 * gasValue,0.05f);
-                Debug.Log(gasValue);
             }
             else
             {

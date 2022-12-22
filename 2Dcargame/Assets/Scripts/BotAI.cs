@@ -12,7 +12,7 @@ public class BotAI : MonoBehaviour
     
     public Rigidbody2D frontTire;
     public Rigidbody2D backTire;
-    public static float _hp;
+    public float _hp;
     public Physics2D physics2D;
     public int gearSelected;
     public float rpm;
@@ -25,6 +25,8 @@ public class BotAI : MonoBehaviour
     public AnimationCurve torqueCurve;
     public float stagingTime;
     public float stagingTimeRemaining;
+    public GameObject Arrow;
+    public GameObject Player;
 
     [System.Serializable]
     public class gears
@@ -40,6 +42,8 @@ public class BotAI : MonoBehaviour
     {
         state = State.Cruise;
         gearSelected = 1;
+        stagingTimeRemaining = stagingTime;
+        Arrow.SetActive(false);
     }
 
 
@@ -47,21 +51,55 @@ public class BotAI : MonoBehaviour
     {
         staticRpm = rpm;
         
-        if (state == State.Cruise && transform.position.x - player.transform.position.x <= 10f && transform.position.y - player.transform.position.y <= 10f)
+        if (state == State.Cruise)
         {
-            Debug.Log("Wanna race? (Press <SPACE> to race)");
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (transform.position.x - player.transform.position.x <= 10f && transform.position.x - player.transform.position.x >= -10f)
             {
-                stagingTimeRemaining = stagingTime - Time.deltaTime;
-                CarController.stagingRace = true;
+                Arrow.SetActive(true);
+
+                Debug.Log(CarController.racer);
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    CarController.racer = gameObject;
+                    CarController.stagingRace = true;
+                    Debug.Log("Race accepted");
+                }
+
+                
+
             }
+            else
+            {
+                Arrow.SetActive(false);
+
+                if (CarController.stagingRace && CarController.racer == gameObject)
+                {
+                    if (Player.transform.position.x - CarController.racer.transform.position.x <= 3)
+                    {
+                        brake = true;
+                        Debug.Log("higher");
+                        throttle = 0;
+                    }
+
+                    if (Player.transform.position.x - CarController.racer.transform.position.x >= -3)
+                    {
+                        throttle = 1;
+                        Debug.Log("Lower");
+                        brake = false;
+                    }
+                }
+            }  
+        }
+
+        if (stagingTimeRemaining >= 1)
+        {
+            
         }
         if (stagingTimeRemaining == 0)
         {
             state = State.Racing;
             CarController.startRace = true;
-            CarController.racer = gameObject;
-            CarController.stagingRace = false;
         }
 
         if (state == State.Cruise)
