@@ -57,7 +57,6 @@ public class BotAI : MonoBehaviour
             {
                 Arrow.SetActive(true);
 
-                Debug.Log(CarController.racer);
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
