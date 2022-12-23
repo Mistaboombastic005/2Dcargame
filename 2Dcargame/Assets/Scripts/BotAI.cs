@@ -12,6 +12,7 @@ public class BotAI : MonoBehaviour
     
     public Rigidbody2D frontTire;
     public Rigidbody2D backTire;
+    public Rigidbody2D car;
     public float _hp;
     public Physics2D physics2D;
     public int gearSelected;
@@ -27,6 +28,7 @@ public class BotAI : MonoBehaviour
     public float stagingTimeRemaining;
     public GameObject Arrow;
     public GameObject Player;
+    public float speedLimit;
 
     [System.Serializable]
     public class gears
@@ -37,6 +39,7 @@ public class BotAI : MonoBehaviour
     public gears[] _gears;
     public float breakForce;
     public bool brake;
+    public AnimationCurve speedLimitCruise;
 
     private void Start()
     {
@@ -44,15 +47,24 @@ public class BotAI : MonoBehaviour
         gearSelected = 1;
         stagingTimeRemaining = stagingTime;
         Arrow.SetActive(false);
+        car = gameObject.GetComponent<Rigidbody2D>();
     }
 
 
     public void Update()
     {
-        staticRpm = rpm;
+        if (car.velocity.magnitude > speedLimit / 3.6f)
+        {
+            car.velocity = new Vector2(speedLimit / 3.6f,0);
+        }
         
         if (state == State.Cruise)
         {
+            Debug.Log(throttle);
+            Debug.Log(car.velocity.magnitude * 3.6);
+            
+            //throttle = throttle * speedLimitCruise.Evaluate(car.velocity.magnitude * 3.6f);
+            
             if (transform.position.x - player.transform.position.x <= 10f && transform.position.x - player.transform.position.x >= -10f)
             {
                 Arrow.SetActive(true);
@@ -64,8 +76,6 @@ public class BotAI : MonoBehaviour
                     CarController.stagingRace = true;
                     Debug.Log("Race accepted");
                 }
-
-                
 
             }
             else

@@ -36,7 +36,7 @@ public class BotAudio : MonoBehaviour
         _audioSource4.pitch = Mathf.Clamp(_audioSource4.pitch, 0.9f, 4);
 
 
-        _audioSource1.volume = volumeIdle.Evaluate(BotAI.staticRpm);
+        _audioSource1.volume = volumeIdle.Evaluate(gameObject.GetComponent<BotAI>().rpm);
         _audioSource2.volume = volumeLow.Evaluate(BotAI.staticRpm);
         _audioSource3.volume = volumeMed.Evaluate(BotAI.staticRpm);
         _audioSource4.volume = volumeHigh.Evaluate(BotAI.staticRpm);
