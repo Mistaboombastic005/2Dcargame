@@ -93,22 +93,22 @@ public class CarController : MonoBehaviour
             {
                 if (rotationalSpeed < breakForce)
                 {
-                    frontTire.angularVelocity -= frontTire.angularVelocity;
+                    frontTire.angularVelocity -= frontTire.angularVelocity * Time.deltaTime;
                 }
                 else
                 {
-                    frontTire.angularVelocity += breakForce;
+                    frontTire.angularVelocity += breakForce * Time.deltaTime;
                 }
             }
             if (rotationalSpeed < 0)
             {
                 if (rotationalSpeed > breakForce)
                 {
-                    frontTire.angularVelocity += frontTire.angularVelocity;
+                    frontTire.angularVelocity += frontTire.angularVelocity * Time.deltaTime;
                 }
                 else
                 {
-                    frontTire.angularVelocity -= breakForce;
+                    frontTire.angularVelocity -= breakForce * Time.deltaTime;
                 }
 
             }

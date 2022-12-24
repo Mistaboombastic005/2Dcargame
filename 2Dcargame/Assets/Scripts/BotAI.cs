@@ -55,9 +55,13 @@ public class BotAI : MonoBehaviour
     {
         if (car.velocity.magnitude > speedLimit / 3.6f)
         {
-            car.velocity = new Vector2(speedLimit / 3.6f,0);
+            throttle = throttle * 0;
         }
-        
+        if (car.velocity.magnitude > (speedLimit + 10) / 3.6f)
+        {
+            brake = true;
+        }
+
         if (state == State.Cruise)
         {
             Debug.Log(throttle);
