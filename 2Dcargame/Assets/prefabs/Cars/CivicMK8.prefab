@@ -544,11 +544,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  breakForce: 8000
+  breakForce: 80000
   rb1: {fileID: 5730578944888709685}
   _cameraFollow1: {fileID: 0}
   slider: {fileID: 0}
   gasValue: 0
+  stagingTime: 5
+  stagingTimeRemaining: 0
 --- !u!82 &4499434865250577125
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1372,8 +1374,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7182404570584833485}
-  m_LocalRotation: {x: -0, y: -0, z: -0.80620056, w: 0.59164244}
-  m_LocalPosition: {x: 13.11, y: 1.38, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.72345537, w: 0.6903712}
+  m_LocalPosition: {x: 12.75, y: 1.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1445,10 +1447,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 10.14
-  m_PointLightOuterAngle: 21.64
+  m_PointLightInnerAngle: 15.82
+  m_PointLightOuterAngle: 27.32
   m_PointLightInnerRadius: 0.5216264
-  m_PointLightOuterRadius: 13.455613
+  m_PointLightOuterRadius: 9.525118
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

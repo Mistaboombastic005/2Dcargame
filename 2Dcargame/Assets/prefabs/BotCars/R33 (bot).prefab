@@ -128,45 +128,48 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: -14.999989
-      inSlope: 0.08929951
-      outSlope: 0.08929951
+      inSlope: -0.015607323
+      outSlope: -0.015607323
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.5610673
+      outWeight: 0.37416694
     - serializedVersion: 3
-      time: 5.8707714
-      value: -13.943536
-      inSlope: 0.22164874
-      outSlope: 0.22164874
+      time: 15.245546
+      value: -12.98268
+      inSlope: 0.39608705
+      outSlope: 0.39608705
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.5175161
+      inWeight: 0.33333334
+      outWeight: 0.21198586
+    - serializedVersion: 3
+      time: 37.98262
+      value: -4.677637
+      inSlope: 0.036974043
+      outSlope: 0.036974043
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.3611558
       outWeight: 0.13924167
     - serializedVersion: 3
-      time: 25.100998
-      value: -3.6614375
-      inSlope: 0.00416499
-      outSlope: 0.00416499
+      time: 100
+      value: -3.999998
+      inSlope: -0.0030648727
+      outSlope: -0.0030648727
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.092425466
-    - serializedVersion: 3
-      time: 298.64877
-      value: -2.282946
-      inSlope: 0.00006896396
-      outSlope: 0.00006896396
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.16524805
+      inWeight: 0.1630914
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   Player: {fileID: 0}
-  throttleClimbing: 1.5
-  throttleStraight: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  throttleClimbing: 2
+  throttleStraight: 2
 --- !u!1 &812592397
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +348,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1220471181
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -429,7 +432,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1220471181
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1230,6 +1233,7 @@ MonoBehaviour:
   driveTrain: 0
   frontTire: {fileID: 4824081442059892510}
   backTire: {fileID: 2228521563583753920}
+  car: {fileID: 0}
   _hp: 0
   gearSelected: 0
   rpm: 0
@@ -1280,10 +1284,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  stagingTime: 5
-  stagingTimeRemaining: 5
   Arrow: {fileID: 1550345542}
   Player: {fileID: 0}
+  speedLimit: 50
   _gears:
   - GearNumber: -1
     gearRatio: -4

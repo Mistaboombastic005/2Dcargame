@@ -53,6 +53,8 @@ public class CarController : MonoBehaviour
     public static bool startRace;
     public static GameObject racer;
     public static bool stagingRace = false;
+    public float stagingTime;
+    public float stagingTimeRemaining;
 
 
     private void Start()
@@ -63,24 +65,43 @@ public class CarController : MonoBehaviour
 
         slider = GameObject.FindGameObjectWithTag("Slider");
 
-
+        stagingTimeRemaining = stagingTime;
+        stagingRace = false;
     }
 
     void Update()
     {
         gearSelected = Mathf.Clamp(gearSelected, -1, highestGear);
+        
 
         gasValue = slider.GetComponent<Slider>().value;
 
         if (stagingRace)
         {
-            
+            if (transform.position.x - racer.transform.position.x <= 5 && transform.position.x - racer.transform.position.x >= -5 && racer.GetComponent<BotAI>().state == State.Cruise)
+            {
+                stagingTimeRemaining = stagingTime;
+                stagingTimeRemaining -= Time.time;
+                Debug.Log(stagingTimeRemaining);
+            }
+            else
+            {
+                stagingTimeRemaining = stagingTime;
+            }
         }
-        
-        if (startRace)
+        if (stagingTimeRemaining <= 0)
+        {
+            startRace = true;
+            stagingRace = false;
+        }
+        else
         {
             startRace = false;
-            
+        }
+
+        if (startRace)
+        {
+            racer.GetComponent<BotAI>().state = State.Racing;
         }
         
 

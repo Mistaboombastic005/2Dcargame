@@ -9,6 +9,8 @@ public class MobileInput : MonoBehaviour
     public static bool gas;
     public static bool brake;
     public static bool _startEngine;
+    public static bool acceptRace;
+    public GameObject raceButton;
 
 
     
@@ -21,6 +23,11 @@ public class MobileInput : MonoBehaviour
     public void BrakeInput(bool braking)
     {
         brake = braking;
+    }
+
+    public void acceptRaceInput()
+    {
+        acceptRace = true;
     }
 
     public void startEngine()

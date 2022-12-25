@@ -24,8 +24,6 @@ public class BotAI : MonoBehaviour
     public GameObject player;
     public float throttle;
     public AnimationCurve torqueCurve;
-    public float stagingTime;
-    public float stagingTimeRemaining;
     public GameObject Arrow;
     public GameObject Player;
     public float speedLimit;
@@ -39,46 +37,42 @@ public class BotAI : MonoBehaviour
     public gears[] _gears;
     public float breakForce;
     public bool brake;
-    public AnimationCurve speedLimitCruise;
 
     private void Start()
     {
         state = State.Cruise;
         gearSelected = 1;
-        stagingTimeRemaining = stagingTime;
         Arrow.SetActive(false);
         car = gameObject.GetComponent<Rigidbody2D>();
+        CarController.racer = null;
     }
 
 
     public void Update()
     {
-        if (car.velocity.magnitude > speedLimit / 3.6f)
-        {
-            throttle = throttle * 0;
-        }
-        if (car.velocity.magnitude > (speedLimit + 10) / 3.6f)
-        {
-            brake = true;
-        }
-
         if (state == State.Cruise)
         {
-            Debug.Log(throttle);
-            Debug.Log(car.velocity.magnitude * 3.6);
-            
-            //throttle = throttle * speedLimitCruise.Evaluate(car.velocity.magnitude * 3.6f);
-            
+            if (car.velocity.magnitude > speedLimit / 3.6f)
+            {
+                throttle = throttle * 0;
+            }
+            if (car.velocity.magnitude > (speedLimit + 10) / 3.6f)
+            {
+                brake = true;
+            }
+
+
             if (transform.position.x - player.transform.position.x <= 10f && transform.position.x - player.transform.position.x >= -10f)
             {
                 Arrow.SetActive(true);
 
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && state == State.Cruise || MobileInput.acceptRace && state == State.Cruise)
                 {
                     CarController.racer = gameObject;
                     CarController.stagingRace = true;
-                    Debug.Log("Race accepted");
+                    Debug.Log("Race Accepted");
+                    MobileInput.acceptRace = false;
                 }
 
             }
@@ -88,32 +82,21 @@ public class BotAI : MonoBehaviour
 
                 if (CarController.stagingRace && CarController.racer == gameObject)
                 {
-                    if (Player.transform.position.x - CarController.racer.transform.position.x <= 3)
+                    if (Player.transform.position.x - CarController.racer.transform.position.x <= 1)
                     {
                         brake = true;
-                        Debug.Log("higher");
-                        throttle = 0;
+                        throttle *= 0;
                     }
 
-                    if (Player.transform.position.x - CarController.racer.transform.position.x >= -3)
+                    if (Player.transform.position.x - CarController.racer.transform.position.x >= -1)
                     {
-                        throttle = 1;
-                        Debug.Log("Lower");
+                        throttle *= 1;
                         brake = false;
                     }
                 }
             }  
         }
 
-        if (stagingTimeRemaining >= 1)
-        {
-            
-        }
-        if (stagingTimeRemaining == 0)
-        {
-            state = State.Racing;
-            CarController.startRace = true;
-        }
 
         if (state == State.Cruise)
         {

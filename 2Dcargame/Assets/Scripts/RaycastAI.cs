@@ -10,6 +10,8 @@ public class RaycastAI : MonoBehaviour
     public AnimationCurve angleCurve;
     private Rigidbody2D botRigidBody;
     public GameObject Player;
+    public LayerMask layerMask;
+    private float currentAngle;
 
 
     [Header("Throttle AI")]
@@ -33,29 +35,38 @@ public class RaycastAI : MonoBehaviour
     void Update()
     {
         anglefront = angleCurve.Evaluate(botRigidBody.velocity.magnitude);
+
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, anglefront);
-        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 7);
-        if (!CarController.stagingRace && !CarController.racer == gameObject.transform.parent)
+
+
+
+
+        if (CarController.racer != gameObject.transform.parent)
         {
-            if (hit1 && hit1.collider.gameObject.layer == 7)
+            if (gameObject.transform.parent.transform.rotation.z >= 10)
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 100, Color.blue);
-                Debug.DrawRay(pos1.position, pos1.position - pos1.position, Color.blue);
-                botAI.GetComponent<BotAI>().throttle = throttleClimbing;
+                currentAngle = throttleClimbing;
             }
             else
             {
-                RaycastHit2D hit2 = Physics2D.Raycast(pos1.position, pos1.TransformDirection(Vector2.right), 7);
-                Debug.DrawRay(pos1.position, pos1.TransformDirection(Vector2.right) * 100, Color.blue);
-                Debug.DrawRay(transform.position, transform.position - transform.position, Color.red);
-                botAI.GetComponent<BotAI>().throttle = throttleStraight;
+                currentAngle = throttleStraight;
             }
-            RaycastHit2D hit3 = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 7);
-            if (hit3 && hit3.collider.gameObject.layer == 7)
+            
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), layerMask);
+            if (hit1)
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 100, Color.green);
-                botAI.GetComponent<BotAI>().brake = false;
-                botAI.GetComponent<BotAI>().throttle = throttleClimbing;
+                if (hit1.collider.gameObject.layer == 7)
+                {
+                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 100, Color.green);
+                    botAI.GetComponent<BotAI>().brake = false;
+                    botAI.GetComponent<BotAI>().throttle = currentAngle;
+                }
+                else
+                {
+                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 100, Color.yellow);
+                    botAI.GetComponent<BotAI>().brake = false;
+                    botAI.GetComponent<BotAI>().throttle = currentAngle;
+                }
             }
             else
             {
