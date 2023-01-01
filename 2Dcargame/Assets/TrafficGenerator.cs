@@ -6,12 +6,14 @@ public class TrafficGenerator : MonoBehaviour
 {
     public GameObject Player;
     public int maxCarNumber;
-    private int currentCarNumber;
-    private float spaceBefore;
-    private float spaceAfter;
-    private int pointTowardsBool;
-    private int pointTowards;
-    private int frontOrBackBool;
+    public static int currentCarNumber;
+    public float spaceBefore;
+    public float spaceAfter;
+    public static int pointTowardsBool;
+    public int pointTowards;
+    public int frontOrBackBool;
+    public static int maxDistanceStatic;
+    public int maxDistance;
 
 
     [System.Serializable]
@@ -31,24 +33,29 @@ public class TrafficGenerator : MonoBehaviour
     public wheels[] _wheel;
 
 
+    private void Start()
+    {
+        currentCarNumber = 0;
+    }
     private void Update()
     {
-        if (currentCarNumber <= maxCarNumber)
+        maxDistanceStatic = maxDistance;
+        if (currentCarNumber < maxCarNumber)
         {
-            StartCoroutine(SpawnCar());
+            SpawnCar();
+            frontOrBackBool = 2;
+            pointTowardsBool = 2;
+            pointTowards = 0;
         }
 
         spaceBefore = Player.transform.position.x - 1000;
         spaceAfter = Player.transform.position.x + 1000;
     }
 
-    IEnumerator SpawnCar ()
+    public void SpawnCar()
     {
-        frontOrBackBool = 2;
-        pointTowardsBool = 2;
-        pointTowards = 0;
-        pointTowardsBool = Random.Range(0, 1);
-        frontOrBackBool = Random.Range(0, 1);
+        pointTowardsBool = Random.Range(0, 2);
+        frontOrBackBool = Random.Range(0, 2);
         if (pointTowardsBool == 1)
         {
             pointTowards = 180;
@@ -60,17 +67,15 @@ public class TrafficGenerator : MonoBehaviour
                 pointTowards = 0;
             }
         }
-        if (frontOrBackBool == 0) 
+        if (frontOrBackBool == 0)
         {
-            GameObject carInstance = Instantiate(_body[Random.Range(0, _body.Length - 1)].bodyGO, new Vector3(Random.Range(Player.transform.position.x + 50, spaceAfter), 0, 0), Quaternion.Euler(0, pointTowards, 0));
+            GameObject carInstance = Instantiate(_body[Random.Range(0, _body.Length)].bodyGO, new Vector3(Random.Range(Player.transform.position.x + 100, spaceAfter), 0, 0), Quaternion.Euler(0, pointTowards, 0));
             currentCarNumber++;
         }
         else
         {
-            GameObject carInstance = Instantiate(_body[Random.Range(0, _body.Length - 1)].bodyGO, new Vector3(Random.Range(Player.transform.position.x - 50, spaceBefore), 0, 0), Quaternion.Euler(0, pointTowards, 0));
+            GameObject carInstance = Instantiate(_body[Random.Range(0, _body.Length)].bodyGO, new Vector3(Random.Range(Player.transform.position.x - 100, spaceBefore), 0, 0), Quaternion.Euler(0, pointTowards, 0));
             currentCarNumber++;
         }
-
-        yield return new WaitForSeconds(1);
     }
 }

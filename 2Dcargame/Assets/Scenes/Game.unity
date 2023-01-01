@@ -1397,11 +1397,9 @@ MonoBehaviour:
   maxCarNumber: 50
   _body:
   - name: R33
-    bodyGO: {fileID: 4208343100335379400, guid: 0917a221d9875284e85f8b35f0f3626b, type: 3}
-  - name: CivikMk1
-    bodyGO: {fileID: 4208343100335379400, guid: 4a06a9422eb59ec42b1e975f58eca15b, type: 3}
+    bodyGO: {fileID: 5014338194472402155, guid: 6ff83e0c0a15f654b85b7a389ee86ae2, type: 3}
   - name: CivikMk8
-    bodyGO: {fileID: 5014338194472402155, guid: a1db038fb4e295747ab645cda55c9c6e, type: 3}
+    bodyGO: {fileID: 5014338194472402155, guid: d026639bd13082048a7c6f296c258bfc, type: 3}
   _wheel:
   - name: VolkTe
     wheelGO: {fileID: 4684747796045626004, guid: 7c4c891b6359cd0469d220bfda2fd307, type: 3}

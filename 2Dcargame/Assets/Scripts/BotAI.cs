@@ -25,8 +25,8 @@ public class BotAI : MonoBehaviour
     public float throttle;
     public AnimationCurve torqueCurve;
     public GameObject Arrow;
-    public GameObject Player;
     public float speedLimit;
+    public int directionY;
 
     [System.Serializable]
     public class gears
@@ -45,11 +45,39 @@ public class BotAI : MonoBehaviour
         Arrow.SetActive(false);
         car = gameObject.GetComponent<Rigidbody2D>();
         CarController.racer = null;
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (gameObject.transform.rotation.y == 0)
+        {
+            directionY = 1;
+        }
+        if (gameObject.transform.rotation.y == 1)
+        {
+            directionY = -1;
+        }
     }
 
 
     public void Update()
     {
+        if (gameObject.transform.position.y <= -30)
+        {
+            gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 70);
+        }
+
+
+        if (gameObject.transform.position.x > player.transform.position.x + TrafficGenerator.maxDistanceStatic)
+        {
+            Destroy(gameObject);
+            TrafficGenerator.currentCarNumber--;
+        }
+        if (gameObject.transform.position.x < player.transform.position.x - TrafficGenerator.maxDistanceStatic)
+        {
+            Destroy(gameObject);
+            TrafficGenerator.currentCarNumber--;
+        }
+        
+        
+        throttle *= directionY;
         if (state == State.Cruise)
         {
             if (car.velocity.magnitude > speedLimit / 3.6f)
@@ -82,13 +110,13 @@ public class BotAI : MonoBehaviour
 
                 if (CarController.stagingRace && CarController.racer == gameObject)
                 {
-                    if (Player.transform.position.x - CarController.racer.transform.position.x <= 1)
+                    if (player.transform.position.x - CarController.racer.transform.position.x <= 1)
                     {
                         brake = true;
                         throttle *= 0;
                     }
 
-                    if (Player.transform.position.x - CarController.racer.transform.position.x >= -1)
+                    if (player.transform.position.x - CarController.racer.transform.position.x >= -1)
                     {
                         throttle *= 1;
                         brake = false;
@@ -195,5 +223,4 @@ public class BotAI : MonoBehaviour
             }
         }
     }
-
 }
