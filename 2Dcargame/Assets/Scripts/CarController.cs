@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
+
+
+public enum PlayerDriveTrain { AWD, RWD, FWD }
 
 public class CarController : MonoBehaviour
 {
@@ -9,7 +13,7 @@ public class CarController : MonoBehaviour
     public Rigidbody2D frontTire;
     public Rigidbody2D rb;
     public float Enginehp;
-    public string driveTrain;
+    public PlayerDriveTrain playerDriveTrain;
     public float velocity;
     public CameraFollow _cameraFollow;
     [SerializeField] Speedometer _speedometer;
@@ -37,9 +41,7 @@ public class CarController : MonoBehaviour
     public static bool engineOn = false;
     public bool engineStarting;
     public static float hp;
-    public float peakHp;
     public static float gearRatio;
-    public float peakRpm;
     public AnimationCurve TorqueCurve;
     public AnimationCurve soundVolumeCurve;
     public float breakForce;
@@ -55,6 +57,9 @@ public class CarController : MonoBehaviour
     public static bool stagingRace = false;
     public float stagingTime;
     public float stagingTimeRemaining;
+    public Light2D backLight;
+    private float initialIntensity;
+    private float Intensity;
 
 
     private void Start()
@@ -67,6 +72,7 @@ public class CarController : MonoBehaviour
 
         stagingTimeRemaining = stagingTime;
         stagingRace = false;
+        initialIntensity = backLight.intensity;
     }
 
     void Update()
@@ -107,9 +113,11 @@ public class CarController : MonoBehaviour
 
         staticRPM = rpm;
 
-
+        Intensity = initialIntensity + 1f;
         if (Input.GetKey("a") || MobileInput.brake)
         {
+            backLight.intensity = Mathf.Lerp(backLight.intensity, Intensity, 0.3f);
+            
             if (rotationalSpeed > 0)
             {
                 if (rotationalSpeed < breakForce)
@@ -133,13 +141,17 @@ public class CarController : MonoBehaviour
                 }
 
             }
-        }        
+        }
+        else
+        {
+            backLight.intensity = Mathf.Lerp(backLight.intensity, initialIntensity, 0.3f); ;
+        }
         rotationalSpeed = -1 * frontTire.angularVelocity;
 
         //awd
         if (engineOn && transEngaged && !EngineSound.startEngine)
         {
-            if (driveTrain == "awd")
+            if (playerDriveTrain == PlayerDriveTrain.AWD)
             {
                 frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
                 backTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
@@ -154,7 +166,7 @@ public class CarController : MonoBehaviour
 
             //rwd
 
-            if (driveTrain == "rwd")
+            if (playerDriveTrain == PlayerDriveTrain.RWD)
             {
                 backTire.AddTorque(Engine.hp * gasValue * Engine.gearRatio * -1 * Time.deltaTime);
             }
@@ -167,7 +179,7 @@ public class CarController : MonoBehaviour
 
             //fwd
 
-            if (driveTrain == "fwd")
+            if (playerDriveTrain == PlayerDriveTrain.FWD)
             {
                 frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
             }

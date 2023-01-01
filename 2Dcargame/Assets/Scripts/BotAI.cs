@@ -4,11 +4,11 @@ using UnityEngine;
 
 
 public enum State { Parked, Cruise, Racing}
-public enum DriveTrain { AWD, RWD, FWD}
+public enum BotDriveTrain { AWD, RWD, FWD}
 public class BotAI : MonoBehaviour
 {
     public State state;
-    public DriveTrain driveTrain;
+    public BotDriveTrain driveTrain;
     
     public Rigidbody2D frontTire;
     public Rigidbody2D backTire;
@@ -27,6 +27,7 @@ public class BotAI : MonoBehaviour
     public GameObject Arrow;
     public float speedLimit;
     public int directionY;
+    public float KM_H;
 
     [System.Serializable]
     public class gears
@@ -59,12 +60,9 @@ public class BotAI : MonoBehaviour
 
     public void Update()
     {
-        if (gameObject.transform.position.y <= -30)
-        {
-            gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 70);
-        }
-
-
+        KM_H = car.velocity.magnitude * 3.6f;
+        
+        
         if (gameObject.transform.position.x > player.transform.position.x + TrafficGenerator.maxDistanceStatic)
         {
             Destroy(gameObject);
@@ -128,18 +126,18 @@ public class BotAI : MonoBehaviour
 
         if (state == State.Cruise)
         {
-            if (driveTrain == DriveTrain.AWD)
+            if (driveTrain == BotDriveTrain.AWD)
             {
                 frontTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
                 backTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.FWD)
+            if (driveTrain == BotDriveTrain.FWD)
             {
                 frontTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.RWD)
+            if (driveTrain == BotDriveTrain.RWD)
             {
                 backTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
             }
@@ -156,18 +154,18 @@ public class BotAI : MonoBehaviour
 
         if (state == State.Racing)
         {
-            if (driveTrain == DriveTrain.AWD)
+            if (driveTrain == BotDriveTrain.AWD)
             {
                 frontTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
                 backTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.FWD)
+            if (driveTrain == BotDriveTrain.FWD)
             {
                 frontTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.RWD)
+            if (driveTrain == BotDriveTrain.RWD)
             {
                 backTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
             }
@@ -221,6 +219,14 @@ public class BotAI : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            transform.position += Vector3.up * Time.deltaTime * 1000;
         }
     }
 }
