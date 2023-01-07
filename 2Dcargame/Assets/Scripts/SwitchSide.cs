@@ -16,7 +16,7 @@ public class SwitchSide : MonoBehaviour
 
     private void Update()
     {
-        size = car.transform.localScale;
+        //size = car.transform.localScale;
     }
 
     public void SwitchSideClicked()

@@ -4,11 +4,11 @@ using UnityEngine;
 
 
 public enum State { Parked, Cruise, Racing}
-public enum DriveTrain { AWD, RWD, FWD}
+public enum BotDriveTrain { AWD, RWD, FWD}
 public class BotAI : MonoBehaviour
 {
     public State state;
-    public DriveTrain driveTrain;
+    public BotDriveTrain driveTrain;
     
     public Rigidbody2D frontTire;
     public Rigidbody2D backTire;
@@ -24,11 +24,10 @@ public class BotAI : MonoBehaviour
     public GameObject player;
     public float throttle;
     public AnimationCurve torqueCurve;
-    public float stagingTime;
-    public float stagingTimeRemaining;
     public GameObject Arrow;
-    public GameObject Player;
     public float speedLimit;
+    public int directionY;
+    public float KM_H;
 
     [System.Serializable]
     public class gears
@@ -39,42 +38,67 @@ public class BotAI : MonoBehaviour
     public gears[] _gears;
     public float breakForce;
     public bool brake;
-    public AnimationCurve speedLimitCruise;
 
     private void Start()
     {
         state = State.Cruise;
         gearSelected = 1;
-        stagingTimeRemaining = stagingTime;
         Arrow.SetActive(false);
         car = gameObject.GetComponent<Rigidbody2D>();
+        CarController.racer = null;
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (gameObject.transform.rotation.y == 0)
+        {
+            directionY = 1;
+        }
+        if (gameObject.transform.rotation.y == 1)
+        {
+            directionY = -1;
+        }
     }
 
 
     public void Update()
     {
-        if (car.velocity.magnitude > speedLimit / 3.6f)
+        KM_H = car.velocity.magnitude * 3.6f;
+        
+        
+        if (gameObject.transform.position.x > player.transform.position.x + TrafficGenerator.maxDistanceStatic)
         {
-            car.velocity = new Vector2(speedLimit / 3.6f,0);
+            Destroy(gameObject);
+            TrafficGenerator.currentCarNumber--;
+        }
+        if (gameObject.transform.position.x < player.transform.position.x - TrafficGenerator.maxDistanceStatic)
+        {
+            Destroy(gameObject);
+            TrafficGenerator.currentCarNumber--;
         }
         
+        
+        throttle *= directionY;
         if (state == State.Cruise)
         {
-            Debug.Log(throttle);
-            Debug.Log(car.velocity.magnitude * 3.6);
-            
-            //throttle = throttle * speedLimitCruise.Evaluate(car.velocity.magnitude * 3.6f);
-            
+            if (car.velocity.magnitude > speedLimit / 3.6f)
+            {
+                throttle = throttle * 0;
+            }
+            if (car.velocity.magnitude > (speedLimit + 10) / 3.6f)
+            {
+                brake = true;
+            }
+
+
             if (transform.position.x - player.transform.position.x <= 10f && transform.position.x - player.transform.position.x >= -10f)
             {
                 Arrow.SetActive(true);
 
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && state == State.Cruise || MobileInput.acceptRace && state == State.Cruise)
                 {
                     CarController.racer = gameObject;
                     CarController.stagingRace = true;
-                    Debug.Log("Race accepted");
+                    Debug.Log("Race Accepted");
+                    MobileInput.acceptRace = false;
                 }
 
             }
@@ -84,47 +108,36 @@ public class BotAI : MonoBehaviour
 
                 if (CarController.stagingRace && CarController.racer == gameObject)
                 {
-                    if (Player.transform.position.x - CarController.racer.transform.position.x <= 3)
+                    if (player.transform.position.x - CarController.racer.transform.position.x <= 1)
                     {
                         brake = true;
-                        Debug.Log("higher");
-                        throttle = 0;
+                        throttle *= 0;
                     }
 
-                    if (Player.transform.position.x - CarController.racer.transform.position.x >= -3)
+                    if (player.transform.position.x - CarController.racer.transform.position.x >= -1)
                     {
-                        throttle = 1;
-                        Debug.Log("Lower");
+                        throttle *= 1;
                         brake = false;
                     }
                 }
             }  
         }
 
-        if (stagingTimeRemaining >= 1)
-        {
-            
-        }
-        if (stagingTimeRemaining == 0)
-        {
-            state = State.Racing;
-            CarController.startRace = true;
-        }
 
         if (state == State.Cruise)
         {
-            if (driveTrain == DriveTrain.AWD)
+            if (driveTrain == BotDriveTrain.AWD)
             {
                 frontTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
                 backTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.FWD)
+            if (driveTrain == BotDriveTrain.FWD)
             {
                 frontTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.RWD)
+            if (driveTrain == BotDriveTrain.RWD)
             {
                 backTire.AddTorque(_hp * (throttle / 1.5f) * gearRatio * -1 * Time.deltaTime);
             }
@@ -141,18 +154,18 @@ public class BotAI : MonoBehaviour
 
         if (state == State.Racing)
         {
-            if (driveTrain == DriveTrain.AWD)
+            if (driveTrain == BotDriveTrain.AWD)
             {
                 frontTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
                 backTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.FWD)
+            if (driveTrain == BotDriveTrain.FWD)
             {
                 frontTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
             }
 
-            if (driveTrain == DriveTrain.RWD)
+            if (driveTrain == BotDriveTrain.RWD)
             {
                 backTire.AddTorque(_hp * throttle * gearRatio * -1 * Time.deltaTime);
             }
@@ -209,4 +222,11 @@ public class BotAI : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            transform.position += Vector3.up * Time.deltaTime * 1000;
+        }
+    }
 }

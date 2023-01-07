@@ -16,7 +16,7 @@ TagManager:
   - Background1
   - Ground
   - Racer
-  - 
+  - GroundTrigger
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: Background1
     uniqueID: 852176761
+    locked: 0
+  - name: Ground
+    uniqueID: 1510217121
     locked: 0
   - name: CarNormal
     uniqueID: 2552571261
