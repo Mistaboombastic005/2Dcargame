@@ -16,6 +16,7 @@ public class CameraFollow : MonoBehaviour
     public Vector3 vibration;
     public static float timeSinceStart;
     public AnimationCurve pan;
+    public float zoomFactor;
 
     private void Start()
     {
@@ -42,7 +43,7 @@ public class CameraFollow : MonoBehaviour
         vibration.x = (Mathf.Sin(timeSinceStart) / pan.Evaluate(KM_H));
        
 
-        mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, zoomCurve.Evaluate(KM_H), 0.020f);
+        mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, zoomCurve.Evaluate(KM_H) + zoomFactor, 0.020f);
 
         offset.x = Mathf.Lerp(offset.x,zoomCurve.Evaluate(KM_H) * 1.5f -3.5f, 0.0020f);
 

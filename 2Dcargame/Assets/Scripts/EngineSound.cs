@@ -36,10 +36,10 @@ public class EngineSound : MonoBehaviour
         _audioSource4.pitch = Mathf.Clamp(_audioSource4.pitch, 0.9f, 4);
 
 
-        _audioSource1.volume = volumeIdle.Evaluate(CarController.staticRPM);
-        _audioSource2.volume = volumeLow.Evaluate(CarController.staticRPM);
-        _audioSource3.volume = volumeMed.Evaluate(CarController.staticRPM);
-        _audioSource4.volume = volumeHigh.Evaluate(CarController.staticRPM);
+        _audioSource1.volume = volumeIdle.Evaluate(CarController.staticRPM) * Game.mainSound;
+        _audioSource2.volume = volumeLow.Evaluate(CarController.staticRPM) * Game.mainSound;
+        _audioSource3.volume = volumeMed.Evaluate(CarController.staticRPM) * Game.mainSound;
+        _audioSource4.volume = volumeHigh.Evaluate(CarController.staticRPM) * Game.mainSound;
 
         _audioSource1.pitch = pitchLow.Evaluate(CarController.staticRPM);
         _audioSource2.pitch = pitchLow.Evaluate(CarController.staticRPM);
