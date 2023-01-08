@@ -12,6 +12,7 @@ public class Speedometer : MonoBehaviour
     public TextMeshProUGUI gearText;
     public float Rpm;
     public int gear;
+    public float angle;
     private void Awake()
     {
         needleTransform = transform.Find("Needle");
@@ -25,15 +26,21 @@ public class Speedometer : MonoBehaviour
 
         gearText.text = gear.ToString();
 
-        needleTransform.eulerAngles = new Vector3(0, 0, GetSpeedRotation(Rpm));
+        //needleTransform.eulerAngles = new Vector3(0, 0, GetSpeedRotation(Rpm));
+        needleTransform.eulerAngles = new Vector3(0, 0, angle );
 
         Km_HText.text = ((int)(CarController.speed)).ToString();
+
+        angle = ((Rpm/-1000)*36)+270;
     }
 
-    public float GetSpeedRotation(float speed)
-    {
-        float totalAngleSize = zeroSpeedAngle - maxSpeedAngle;
+   // public float GetSpeedRotation(float rpm)
+   // {
+        //float totalAngleSize = zeroSpeedAngle - maxSpeedAngle;
 
-        return zeroSpeedAngle - speed / 10000 * totalAngleSize;
-    }
+        //return zeroSpeedAngle - rpm / 10000 * totalAngleSize;
+
+   //}
+
+
 }

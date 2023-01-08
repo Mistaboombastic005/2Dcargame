@@ -45,6 +45,7 @@ public class CarController : MonoBehaviour
     public AnimationCurve TorqueCurve;
     public AnimationCurve soundVolumeCurve;
     public float breakForce;
+    public float factor;
 
 
     public Rigidbody2D rb1;
@@ -78,7 +79,14 @@ public class CarController : MonoBehaviour
     void Update()
     {
         gearSelected = Mathf.Clamp(gearSelected, -1, highestGear);
-        
+        if(rpm > rpmLimit)
+        {
+            factor = 0;
+        }
+        else
+        {
+            factor = 1;
+        }
 
         gasValue = slider.GetComponent<Slider>().value;
 
@@ -117,34 +125,41 @@ public class CarController : MonoBehaviour
         if (Input.GetKey("a") || MobileInput.brake)
         {
             backLight.intensity = Mathf.Lerp(backLight.intensity, Intensity, 0.3f);
-            
-            if (rotationalSpeed > 0)
+
+            if (rotationalSpeed > 0)//forward
             {
-                if (rotationalSpeed < breakForce)
+                if (rotationalSpeed > 0.3)
                 {
-                    frontTire.angularVelocity -= frontTire.angularVelocity * Time.deltaTime;
+                    frontTire.angularVelocity += 100;
+                    backTire.angularVelocity += 100;
+
                 }
                 else
                 {
-                    frontTire.angularVelocity += breakForce * Time.deltaTime;
-                }
-            }
-            if (rotationalSpeed < 0)
-            {
-                if (rotationalSpeed > breakForce)
-                {
-                    frontTire.angularVelocity += frontTire.angularVelocity * Time.deltaTime;
-                }
-                else
-                {
-                    frontTire.angularVelocity -= breakForce * Time.deltaTime;
+                    frontTire.freezeRotation = true;
+                    backTire.freezeRotation = true;
                 }
 
+            }
+            if (rotationalSpeed < 0)//backward
+            {
+                if (rotationalSpeed < -0.3)
+                {
+                    frontTire.angularVelocity -= 100;
+                    backTire.angularVelocity -= 100;
+                }
+                else
+                {
+                    frontTire.freezeRotation = true;
+                    backTire.freezeRotation = true;
+                }
             }
         }
         else
         {
             backLight.intensity = Mathf.Lerp(backLight.intensity, initialIntensity, 0.3f); ;
+            frontTire.freezeRotation = false;
+            backTire.freezeRotation = false;
         }
         rotationalSpeed = -1 * frontTire.angularVelocity;
 
@@ -153,8 +168,8 @@ public class CarController : MonoBehaviour
         {
             if (playerDriveTrain == PlayerDriveTrain.AWD)
             {
-                frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
-                backTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
+                frontTire.AddTorque(hp * gasValue * gearRatio * factor * -1 * Time.deltaTime);
+                backTire.AddTorque(hp * gasValue * gearRatio * factor * -1 * Time.deltaTime);
             }
 
 
@@ -168,7 +183,7 @@ public class CarController : MonoBehaviour
 
             if (playerDriveTrain == PlayerDriveTrain.RWD)
             {
-                backTire.AddTorque(Engine.hp * gasValue * Engine.gearRatio * -1 * Time.deltaTime);
+                backTire.AddTorque(Engine.hp * gasValue * Engine.gearRatio * factor * -1 * Time.deltaTime);
             }
 
 
@@ -181,7 +196,7 @@ public class CarController : MonoBehaviour
 
             if (playerDriveTrain == PlayerDriveTrain.FWD)
             {
-                frontTire.AddTorque(hp * gasValue * gearRatio * -1 * Time.deltaTime);
+                frontTire.AddTorque(hp * gasValue * gearRatio * factor * -1 * Time.deltaTime);
             }
         }   
         
@@ -251,7 +266,7 @@ public class CarController : MonoBehaviour
             transEngaged = false;
             if (rpm < rpmLimit)
             {
-                rpm = Mathf.Lerp(rpm, 7000 * gasValue,0.05f);
+                rpm = Mathf.Lerp(rpm, 7000 * gasValue,0.01f);
             }
             else
             {

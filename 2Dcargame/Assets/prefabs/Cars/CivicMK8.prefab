@@ -685,31 +685,31 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.03961662
     - serializedVersion: 3
-      time: 5809.7017
-      value: 202.93358
-      inSlope: -0.00075880013
-      outSlope: -0.00075880013
+      time: 5292.983
+      value: 201.99937
+      inSlope: -0.0041536367
+      outSlope: -0.0041536367
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.07980342
-      outWeight: 0.5974285
+      outWeight: 0.70673734
     - serializedVersion: 3
-      time: 7563.7344
-      value: 157.37637
-      inSlope: -0.10060001
-      outSlope: -0.10060001
+      time: 7864.587
+      value: 106.09681
+      inSlope: -0.05864747
+      outSlope: -0.05864747
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.32293692
-      outWeight: 0.33333334
+      inWeight: 0.13189757
+      outWeight: 0.21678132
     - serializedVersion: 3
-      time: 8644.97
-      value: -50.964478
-      inSlope: -Infinity
-      outSlope: -Infinity
+      time: 9038.8125
+      value: 0.39584565
+      inSlope: -0.0015218542
+      outSlope: -0.0015218542
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.35476625
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -739,6 +739,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   breakForce: 80000
+  factor: 1
   rb1: {fileID: 5730578944888709685}
   _cameraFollow1: {fileID: 0}
   slider: {fileID: 0}
@@ -802,7 +803,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.3
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1159,7 +1160,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.3
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1255,7 +1256,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.3
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1351,7 +1352,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.3
       inSlope: 0
       outSlope: 0
       tangentMode: 0
