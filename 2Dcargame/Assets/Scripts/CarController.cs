@@ -164,7 +164,7 @@ public class CarController : MonoBehaviour
         rotationalSpeed = -1 * frontTire.angularVelocity;
 
         //awd
-        if (engineOn && transEngaged && !EngineSound.startEngine)
+        if (engineOn && transEngaged && !EngineStats.startEngine)
         {
             if (playerDriveTrain == PlayerDriveTrain.AWD)
             {
