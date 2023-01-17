@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EngineStats : MonoBehaviour
+public class EngineSound : MonoBehaviour
 {
     public AudioSource _audioSource1;
     public AudioSource _audioSource2;
@@ -21,26 +21,6 @@ public class EngineStats : MonoBehaviour
     public AnimationCurve pitchMed;
     public AnimationCurve pitchHigh;
     public static bool startEngine;
-    [System.Serializable]
-    public class engine
-    {
-        public AudioClip start;
-        public AudioClip idle;
-        public AudioClip low;
-        public AudioClip medium;
-        public AudioClip high;
-        public AnimationCurve volumeIdle;
-        public AnimationCurve volumeLow;
-        public AnimationCurve volumeMed;
-        public AnimationCurve volumeHigh;
-        public AnimationCurve pitchLow;
-        public AnimationCurve pitchMed;
-        public AnimationCurve pitchHigh;
-        public AnimationCurve torqueCurve;
-        public float rpmLimit;
-        public float idleRpm;
-    }
-    public engine[] _engine;
 
 
     private void Start()

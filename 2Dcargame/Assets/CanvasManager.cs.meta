@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 394d214b734bea74cb0dc57c90d16137
+=======
+guid: f2b2271d6256f3042815a13bbcf647f6
+>>>>>>> parent of d92848f (Canvas manager/dealership)
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
