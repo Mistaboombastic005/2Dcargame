@@ -46,8 +46,5 @@ public class CanvasManager : MonoBehaviour
         currentCanvas.SetActive(false);
     }
 
-    private void OnMouseEnter()
-    {
-        
-    }
+    
 }

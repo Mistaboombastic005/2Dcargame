@@ -3698,10 +3698,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 498525650, guid: d026639bd13082048a7c6f296c258bfc, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 539639740}
-    - target: {fileID: 498525650, guid: d026639bd13082048a7c6f296c258bfc, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 539639740}
@@ -4532,7 +4528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _light: {fileID: 1595310644}
-  sound: 0
 --- !u!4 &1145541090
 Transform:
   m_ObjectHideFlags: 0
@@ -5888,6 +5883,7 @@ GameObject:
   - component: {fileID: 1612833806}
   - component: {fileID: 1612833805}
   - component: {fileID: 1612833810}
+  - component: {fileID: 1612833811}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -6062,6 +6058,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612833804}
   m_Enabled: 1
+--- !u!114 &1612833811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612833804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1001 &1624405042
 PrefabInstance:
   m_ObjectHideFlags: 0
