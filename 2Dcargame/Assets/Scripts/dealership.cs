@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class dealership : MonoBehaviour
 {
-    
+    public CanvasManager canvasManager;
+
     private void OnMouseDown()
     {
-        Debug.Log("clicked");
+        Debug.Log(gameObject.name);
+        canvasManager.OpenDealerShip(gameObject);
     }
 }
