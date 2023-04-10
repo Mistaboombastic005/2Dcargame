@@ -46,12 +46,12 @@ public class CanvasManager : MonoBehaviour
         currentCanvas.SetActive(false);
     }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     
-=======
+//=======
     private void OnMouseEnter()
     {
         
     }
->>>>>>> parent of d92848f (Canvas manager/dealership)
+//>>>>>>> parent of d92848f (Canvas manager/dealership)
 }

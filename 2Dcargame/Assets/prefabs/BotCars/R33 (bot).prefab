@@ -1285,8 +1285,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Arrow: {fileID: 1550345542}
-  Player: {fileID: 0}
   speedLimit: 50
+  directionY: 0
+  KM_H: 0
   _gears:
   - GearNumber: -1
     gearRatio: -4

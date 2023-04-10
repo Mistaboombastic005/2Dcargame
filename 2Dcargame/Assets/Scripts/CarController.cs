@@ -82,6 +82,7 @@ public class CarController : MonoBehaviour
         if(rpm > rpmLimit)
         {
             factor = 0;
+            rpm = rpmLimit;
         }
         else
         {
@@ -126,12 +127,12 @@ public class CarController : MonoBehaviour
         {
             backLight.intensity = Mathf.Lerp(backLight.intensity, Intensity, 0.3f);
 
-            if (rotationalSpeed > 0)//forward
+            if (rotationalSpeed < 0)//forward
             {
-                if (rotationalSpeed > 0.3)
+                if (velocity> 0.1)
                 {
-                    frontTire.angularVelocity += 100;
-                    backTire.angularVelocity += 100;
+                    frontTire.angularVelocity -= breakForce;
+                    backTire.angularVelocity -= breakForce;
 
                 }
                 else
@@ -141,12 +142,12 @@ public class CarController : MonoBehaviour
                 }
 
             }
-            if (rotationalSpeed < 0)//backward
+            if (rotationalSpeed > 0)//backward
             {
-                if (rotationalSpeed < -0.3)
+                if (velocity< -0.1)
                 {
-                    frontTire.angularVelocity -= 100;
-                    backTire.angularVelocity -= 100;
+                    frontTire.angularVelocity += breakForce;
+                    backTire.angularVelocity += breakForce;
                 }
                 else
                 {

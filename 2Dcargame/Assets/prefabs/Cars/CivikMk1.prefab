@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 1158949293646732106}
   m_Layer: 3
   m_Name: CivikMk1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,6 +821,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   breakForce: 80000
+  factor: 0
   rb1: {fileID: 8856846312956320819}
   _cameraFollow1: {fileID: 0}
   slider: {fileID: 0}
